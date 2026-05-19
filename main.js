@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // ==========================================
 // 1. LOGIC TÍNH CHỈ SỐ BMI
 // ==========================================
@@ -20,11 +19,17 @@ function calculateBMI() {
 // ==========================================
 function setWaterProgress(percent) {
     const circle = document.getElementById('waterCircle');
-    // Tạo hiệu ứng lấp đầy vòng tròn dựa trên số phần trăm truyền vào
-    circle.style.background = `conic-gradient(#1dd1a1 ${percent}%, #e0e0e0 ${percent}% 100%)`;
+    if (circle) {
+        circle.style.background = `conic-gradient(#1dd1a1 0% ${percent}%, #e0e0e0 ${percent}% 100%)`;
+    }
+
+    const waterAmount = document.getElementById('waterAmount');
+    if (waterAmount) {
+        waterAmount.innerText = percent;
+    }
 }
 
-// Đặt lượng nước khởi tạo (Ví dụ: Đã uống được 75%)
+// Đặt lượng nước khởi tạo là 75% như trong ảnh mẫu ban đầu hoặc giữ nguyên số hiển thị 100
 setWaterProgress(75);
 
 // ==========================================
@@ -33,19 +38,20 @@ setWaterProgress(75);
 let seconds = 3; // Bắt đầu từ 00:00:03 giống ảnh mẫu
 const stopwatchElement = document.getElementById('stopwatch');
 
-setInterval(() => {
-    seconds++;
-    let hrs = Math.floor(seconds / 3600);
-    let mins = Math.floor((seconds - (hrs * 3600)) / 60);
-    let secs = seconds % 60;
+if (stopwatchElement) {
+    setInterval(() => {
+        seconds++;
+        let hrs = Math.floor(seconds / 3600);
+        let mins = Math.floor((seconds - (hrs * 3600)) / 60);
+        let secs = seconds % 60;
 
-    // Định dạng chuỗi hiển thị luôn có 2 chữ số (00:00:00)
-    if (secs < 10) secs = '0' + secs;
-    if (mins < 10) mins = '0' + mins;
-    if (hrs < 10) hrs = '0' + hrs;
+        if (secs < 10) secs = '0' + secs;
+        if (mins < 10) mins = '0' + mins;
+        if (hrs < 10) hrs = '0' + hrs;
 
-    stopwatchElement.innerText = `${hrs}:${mins}:${secs}`;
-}, 1000);
+        stopwatchElement.innerText = `${hrs}:${mins}:${secs}`;
+    }, 1000);
+}
 
 function logWorkout() {
     alert('Đã lưu dữ liệu tập luyện mới thành công!');
@@ -56,8 +62,7 @@ function logWorkout() {
 // ==========================================
 function closeToast() {
     const toast = document.getElementById('waterToast');
-    toast.style.display = 'none';
+    if (toast) {
+        toast.style.display = 'none';
+    }
 }
-=======
-test
->>>>>>> 9546764d273f0f2c6faed6d7cee9ff8b5f096378
