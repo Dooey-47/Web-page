@@ -18,17 +18,21 @@ body {
 /* --- HEADER --- */
 header {
     background-color: #ffffff;
-    padding: 15px 20px;
+    padding: 15px 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
     border-bottom: 1px solid #eaeaea;
+    position: relative;
+}
+
+/* LEFT SIDE */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .logo-container {
-    position: absolute;
-    left: 40px;
     display: flex;
     align-items: center;
 }
@@ -53,37 +57,38 @@ header {
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold;
-    letter-spacing: 0.5px;
+    margin: 0;
 }
 
-/* --- NAVIGATION BAR --- */
+/* CENTER NAVBAR */
 nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    background-color: #aae1c4;
-    /* Sửa lại màu nền thanh nav */
-    padding: 0;
+    gap: 12px;
+    align-items: center;
+    background: transparent;
 }
 
 .nav-item {
-    flex: 1;
-    text-align: center;
-    padding: 12px 0;
+    padding: 10px 22px;
+    border-radius: 6px;
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: 0.2s;
     font-size: 14px;
-    color: #000000;
+    color: #000;
 }
 
 .nav-item.bmi {
-    background-color: transparent;
+    background-color: #c7f0d8;
 }
 
 .nav-item.water {
     background-color: #83cc9e;
-    /* Mục đang chọn có màu sẫm hơn */
 }
 
 .nav-item.workout {
