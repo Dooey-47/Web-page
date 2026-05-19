@@ -66,5 +66,4 @@ $(document).ready(function () {
     $('.toast-close').click(function () {
         $('#waterToast').fadeOut(300);
     });
-
 });
