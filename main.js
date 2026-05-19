@@ -1,63 +1,70 @@
-<<<<<<< HEAD
-// ==========================================
-// 1. LOGIC TÍNH CHỈ SỐ BMI
-// ==========================================
-function calculateBMI() {
-    const heightCm = parseFloat(document.getElementById('heightInput').value);
-    const weight = parseFloat(document.getElementById('weightInput').value);
+$(document).ready(function () {
 
-    if (heightCm > 0 && weight > 0) {
-        const heightM = heightCm / 100;
-        const bmi = (weight / (heightM * heightM)).toFixed(1);
-        alert(`Chỉ số BMI của bạn là: ${bmi}`);
-    } else {
-        alert('Vui lòng nhập chiều cao và cân nặng hợp lệ!');
+    // BMI
+    $('.btn-bmi').click(function () {
+        const heightCm = parseFloat($('#heightInput').val());
+        const weight = parseFloat($('#weightInput').val());
+
+        if (heightCm > 0 && weight > 0) {
+            const heightM = heightCm / 100;
+            const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+            alert(`Chỉ số BMI của bạn là: ${bmi}`);
+        } else {
+            alert('Vui lòng nhập chiều cao và cân nặng hợp lệ!');
+        }
+    });
+
+
+    // Vòng tròn nước
+    function setWaterProgress(percent) {
+        $('#waterCircle').css(
+            'background',
+            `conic-gradient(
+                #1dd1a1 0% ${percent}%,
+                #e0e0e0 ${percent}% 100%
+            )`
+        );
+
+        $('#waterAmount').text(`${percent}%`);
     }
-}
 
-// ==========================================
-// 2. VÒNG TRÒN TIẾN TRÌNH NƯỚC (WATER LOGIC)
-// ==========================================
-function setWaterProgress(percent) {
-    const circle = document.getElementById('waterCircle');
-    // Tạo hiệu ứng lấp đầy vòng tròn dựa trên số phần trăm truyền vào
-    circle.style.background = `conic-gradient(#1dd1a1 ${percent}%, #e0e0e0 ${percent}% 100%)`;
-}
+    setWaterProgress(75);
 
-// Đặt lượng nước khởi tạo (Ví dụ: Đã uống được 75%)
-setWaterProgress(75);
 
-// ==========================================
-// 3. ĐỒNG HỒ BẤM GIỜ TẬP LUYỆN (STOPWATCH)
-// ==========================================
-let seconds = 3; // Bắt đầu từ 00:00:03 giống ảnh mẫu
-const stopwatchElement = document.getElementById('stopwatch');
+    // Đồng hồ bấm giờ
+    let seconds = 3;
+    const $stopwatchElement = $('#stopwatch');
 
-setInterval(() => {
-    seconds++;
-    let hrs = Math.floor(seconds / 3600);
-    let mins = Math.floor((seconds - (hrs * 3600)) / 60);
-    let secs = seconds % 60;
+    if ($stopwatchElement.length > 0) {
 
-    // Định dạng chuỗi hiển thị luôn có 2 chữ số (00:00:00)
-    if (secs < 10) secs = '0' + secs;
-    if (mins < 10) mins = '0' + mins;
-    if (hrs < 10) hrs = '0' + hrs;
+        setInterval(function () {
 
-    stopwatchElement.innerText = `${hrs}:${mins}:${secs}`;
-}, 1000);
+            seconds++;
 
-function logWorkout() {
-    alert('Đã lưu dữ liệu tập luyện mới thành công!');
-}
+            let hrs = Math.floor(seconds / 3600);
+            let mins = Math.floor((seconds % 3600) / 60);
+            let secs = seconds % 60;
 
-// ==========================================
-// 4. ĐÓNG POPUP TOAST THÔNG BÁO UỐNG NƯỚC
-// ==========================================
-function closeToast() {
-    const toast = document.getElementById('waterToast');
-    toast.style.display = 'none';
-}
-=======
-test
->>>>>>> 9546764d273f0f2c6faed6d7cee9ff8b5f096378
+            hrs = hrs.toString().padStart(2, '0');
+            mins = mins.toString().padStart(2, '0');
+            secs = secs.toString().padStart(2, '0');
+
+            $stopwatchElement.text(`${hrs}:${mins}:${secs}`);
+
+        }, 1000);
+    }
+
+
+    // Nút log
+    $('.btn-log').click(function () {
+        alert('Đã lưu dữ liệu tập luyện mới thành công!');
+    });
+
+
+    // Đóng toast
+    $('.toast-close').click(function () {
+        $('#waterToast').fadeOut(300);
+    });
+
+});
