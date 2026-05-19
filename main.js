@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // ==========================================
 // 1. LOGIC TÍNH CHỈ SỐ BMI
 // ==========================================
@@ -57,3 +58,6 @@ function closeToast() {
     const toast = document.getElementById('waterToast');
     toast.style.display = 'none';
 }
+=======
+test
+>>>>>>> 9546764d273f0f2c6faed6d7cee9ff8b5f096378
