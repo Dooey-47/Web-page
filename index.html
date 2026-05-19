@@ -13,8 +13,9 @@
 
     <header>
         <div class="logo-container">
-            <i class="fa-solid fa-heart logo-heart"></i>
-            <i class="fa-solid fa-droplet logo-water"></i>
+            <i class="fa-solid fa-heart logo-heart">
+                <i class="fa-solid fa-droplet logo-water"></i>
+            </i>
         </div>
         <h1>SỨC KHỎE CÁ NHÂN</h1>
     </header>
@@ -58,7 +59,7 @@
                     </div>
                 </div>
 
-                <div class="input-group" style="margin-top: auto;">
+                <div class="input-group select-group">
                     <label>Thời gian khoảng nhắc nhở:</label>
                     <div class="input-wrapper">
                         <select id="reminderTime">
@@ -73,13 +74,15 @@
 
         <div class="card">
             <div class="card-title">Theo dõi chế độ tập luyện</div>
-            <div class="sub-card">
+            <div class="sub-card workout-card-content">
                 <div class="workout-header">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <i class="fa-solid fa-person-running" style="font-size: 20px;"></i>
+                    <div class="workout-header-left">
+                        <div class="running-circle">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
                         <div>
-                            <div style="font-weight: bold; font-size: 15px;">Tập Luyện</div>
-                            <div style="font-size: 11px; opacity: 0.9;">20 min 1 lần</div>
+                            <div class="workout-header-title">Tập Luyện</div>
+                            <div class="workout-header-sub">20 min 1 lần</div>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right"></i>
@@ -87,21 +90,26 @@
 
                 <div class="workout-detail-box">
                     <div class="left-info">
-                        <div class="workout-info-row">
-                            <span style="color: #2ecc71;"><i class="fa-solid fa-circle-check"></i> Kéo ông đầy
-                                trạng</span>
-                            <span style="color: #777;">Thời gian</span>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="status-icon"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="info-text">Kảo ông đầy trạng</span>
+                            </div>
+                            <div class="info-item text-right">
+                                <span class="label-gray">Thời gian</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-text"><i class="fa-solid fa-fire" style="color: #ff7675;"></i> 146
+                                    calories</span>
+                            </div>
+                            <div class="info-item text-right">
+                                <strong class="time-big">30 min</strong>
+                            </div>
                         </div>
-                        <div class="workout-info-row" style="margin-top: -8px;">
-                            <span></span>
-                            <strong style="font-size: 16px;">30 min</strong>
-                        </div>
-                        <div class="workout-info-row">
-                            <span><i class="fa-solid fa-fire" style="color: #ff7675;"></i> 146 calories</span>
-                        </div>
-                        <div class="workout-info-row">
-                            <span><i class="fa-solid fa-stopwatch" style="color: #2ecc71;"></i> <span
-                                    id="stopwatch">00:00:03</span></span>
+
+                        <div class="stopwatch-row">
+                            <i class="fa-solid fa-stopwatch" style="color: #1dd1a1;"></i>
+                            <span id="stopwatch">00:00:03</span>
                         </div>
                     </div>
 
@@ -132,17 +140,17 @@
     </footer>
 
     <div class="toast-notification" id="waterToast">
+        <button class="toast-close" onclick="closeToast()">&times;</button>
         <div class="toast-icon">
             <i class="fa-solid fa-glass-water"></i>
         </div>
         <div class="toast-content">
-            <h5>Drink Reminder 💧</h5>
-            <p>Nhắc nhở uống nước ngày 💧</p>
+            <h5>Dônk Reminder 💧</h5>
+            <p>Nhắc nhở uống tli ngày 💧</p>
         </div>
-        <div class="toast-close" onclick="closeToast()">&times;</div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
