@@ -1,69 +1,359 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // BMI
-    $('.btn-bmi').click(function () {
-        const heightCm = parseFloat($('#heightInput').val());
-        const weight = parseFloat($('#weightInput').val());
+    // lấy ô nhập chiều cao và cân nặng
+    const heightInput =
+        document.getElementById("heightInput");
 
-        if (heightCm > 0 && weight > 0) {
-            const heightM = heightCm / 100;
-            const bmi = (weight / (heightM * heightM)).toFixed(1);
+    const weightInput =
+        document.getElementById("weightInput");
 
-            alert(`Chỉ số BMI của bạn là: ${bmi}`);
-        } else {
-            alert('Vui lòng nhập chiều cao và cân nặng hợp lệ!');
+
+    // hàm tính bmi
+    window.calculateBMI = function () {
+
+        // lấy dữ liệu người dùng nhập
+        let height =
+            parseFloat(heightInput.value);
+
+        let weight =
+            parseFloat(weightInput.value);
+
+
+        // kiểm tra dữ liệu có trống không
+        if (
+            isNaN(height) ||
+            isNaN(weight)
+        ) {
+            alert(
+                "Vui lòng nhập đầy đủ thông tin!"
+            );
+            return;
         }
-    });
 
 
-    // Vòng tròn nước
-    function setWaterProgress(percent) {
-        $('#waterCircle').css(
-            'background',
-            `conic-gradient(
-                #1dd1a1 0% ${percent}%,
-                #e0e0e0 ${percent}% 100%
-            )`
+        // kiểm tra dữ liệu hợp lệ
+        if (
+            height <= 0 ||
+            weight <= 0
+        ) {
+            alert(
+                "Chiều cao và cân nặng phải lớn hơn 0"
+            );
+            return;
+        }
+
+
+        // đổi chiều cao sang mét
+        let heightM =
+            height / 100;
+
+
+        // tính bmi
+        let bmi =
+            weight /
+            (heightM * heightM);
+
+
+        // phân loại bmi
+        let category = "";
+
+        if (bmi < 18.5)
+            category = "Gầy";
+
+        else if (bmi < 25)
+            category = "Bình thường";
+
+        else if (bmi < 30)
+            category = "Thừa cân";
+
+        else
+            category = "Béo phì";
+
+
+        // hiện kết quả
+        alert(
+            `BMI: ${bmi.toFixed(1)}
+Phân loại: ${category}`
         );
 
-        $('#waterAmount').text(`${percent}%`);
+
+        // lưu dữ liệu
+        localStorage.setItem(
+            "height",
+            height
+        );
+
+        localStorage.setItem(
+            "weight",
+            weight
+        );
+
+    };
+
+
+    // lấy dữ liệu đã lưu
+
+    if (
+        localStorage.getItem("height")
+    ) {
+
+        heightInput.value =
+            localStorage.getItem(
+                "height"
+            );
     }
 
-    setWaterProgress(75);
 
+    if (
+        localStorage.getItem("weight")
+    ) {
 
-    // Đồng hồ bấm giờ
-    let seconds = 3;
-    const $stopwatchElement = $('#stopwatch');
-
-    if ($stopwatchElement.length > 0) {
-
-        setInterval(function () {
-
-            seconds++;
-
-            let hrs = Math.floor(seconds / 3600);
-            let mins = Math.floor((seconds % 3600) / 60);
-            let secs = seconds % 60;
-
-            hrs = hrs.toString().padStart(2, '0');
-            mins = mins.toString().padStart(2, '0');
-            secs = secs.toString().padStart(2, '0');
-
-            $stopwatchElement.text(`${hrs}:${mins}:${secs}`);
-
-        }, 1000);
+        weightInput.value =
+            localStorage.getItem(
+                "weight"
+            );
     }
 
 
-    // Nút log
-    $('.btn-log').click(function () {
-        alert('Đã lưu dữ liệu tập luyện mới thành công!');
-    });
+    // tạo nhắc uống nước
+    let reminder;
 
 
-    // Đóng toast
-    $('.toast-close').click(function () {
-        $('#waterToast').fadeOut(300);
-    });
+    // chọn thời gian nhắc
+    document
+        .getElementById(
+            "reminderTime"
+        )
+        .addEventListener(
+            "change",
+            function () {
+
+                clearInterval(
+                    reminder
+                );
+
+                let minute =
+                    this.value;
+
+
+                // hiện thông báo
+                reminder =
+                    setInterval(() => {
+
+                        document
+                            .getElementById(
+                                "waterToast"
+                            )
+                            .style.display =
+                            "flex";
+
+                    },
+                        minute * 60000
+                    );
+
+            }
+        );
+
+
+    // hàm đóng thông báo
+    window.closeToast =
+        function () {
+
+            document
+                .getElementById(
+                    "waterToast"
+                )
+                .style.display =
+                "none";
+
+        };
+
+
+    // tạo đồng hồ chạy
+    let seconds = 0;
+
+    setInterval(() => {
+
+        seconds++;
+
+        let h =
+            Math.floor(
+                seconds / 3600
+            );
+
+        let m =
+            Math.floor(
+                (seconds % 3600) / 60
+            );
+
+        let s =
+            seconds % 60;
+
+
+        // hiện thời gian
+        document
+            .getElementById(
+                "stopwatch"
+            )
+            .innerText =
+
+            `${String(h).padStart(2, "0")}
+            :
+            ${String(m).padStart(2, "0")}
+            :
+            ${String(s).padStart(2, "0")}`;
+
+    }, 1000);
+
+
+
+    // lấy danh sách tập luyện
+    let workouts =
+        JSON.parse(
+            localStorage.getItem(
+                "workouts"
+            )
+        ) || [];
+
+
+    // hiện danh sách tập
+    function renderWorkout() {
+
+        let old =
+            document.getElementById(
+                "workoutList"
+            );
+
+        if (old) {
+            old.remove();
+        }
+
+        let div =
+            document.createElement(
+                "div"
+            );
+
+        div.id =
+            "workoutList";
+
+
+        workouts.forEach(
+            (item, index) => {
+
+                let row =
+                    document.createElement(
+                        "div"
+                    );
+
+                row.innerHTML =
+                    `
+                ${item}
+                <button onclick=
+                "deleteWorkout(${index})">
+                Xóa
+                </button>
+                `;
+
+                div.appendChild(
+                    row
+                );
+
+            }
+        );
+
+        document
+            .querySelector(
+                ".workout-card-content"
+            )
+            .appendChild(
+                div
+            );
+
+    }
+
+
+    // thêm bài tập
+    window.logWorkout =
+        function () {
+
+            let exercise =
+                prompt(
+                    "Nhập bài tập:"
+                );
+
+            if (
+                !exercise ||
+                exercise.trim() == ""
+            ) {
+                return;
+            }
+
+            workouts.push(
+                exercise
+            );
+
+
+            // lưu danh sách
+            localStorage.setItem(
+                "workouts",
+                JSON.stringify(
+                    workouts
+                )
+            );
+
+            renderWorkout();
+
+        }
+
+
+    // xóa bài tập
+    window.deleteWorkout =
+        function (index) {
+
+            workouts.splice(
+                index,
+                1
+            );
+
+            localStorage.setItem(
+                "workouts",
+                JSON.stringify(
+                    workouts
+                )
+            );
+
+            renderWorkout();
+
+        }
+
+
+    renderWorkout();
+
+
+    // lấy dữ liệu api giả
+    fetch(
+        "https://jsonplaceholder.typicode.com/users/1"
+    )
+
+        .then(
+            response =>
+                response.json()
+        )
+
+        .then(data => {
+
+            console.log(
+                data.name
+            );
+
+        })
+
+        .catch(error => {
+
+            console.log(
+                error
+            );
+
+        });
+
 });
