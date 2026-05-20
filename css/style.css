@@ -11,25 +11,30 @@ body {
     color: #333;
     min-height: 100vh;
     display: flex;
+    /* Sử dụng Flexbox để dễ sắp xếp các thành phần con */
     flex-direction: column;
+    /* Sắp xếp các thành phần con theo chiều dọc (Header -> Main -> Footer) */
     position: relative;
 }
 
-/* --- HEADER --- */
+/* Thanh tiêu đề */
 header {
     background-color: #ffffff;
     padding: 15px 40px;
     display: flex;
+    /* Dùng flexbox căn chỉnh các khối bên trong */
     align-items: center;
+    /* Căn giữa các phần tử trong header theo chiều dọc */
     border-bottom: 1px solid #eaeaea;
     position: relative;
 }
 
-/* LEFT SIDE */
+/* Khối Logo và Tiêu đề bên trái */
 .header-left {
     display: flex;
     align-items: center;
     gap: 15px;
+    /* Tạo khoảng cách 15px giữa logo và chữ h1 */
 }
 
 .logo-container {
@@ -41,11 +46,13 @@ header {
     font-size: 38px;
     color: #ff7675;
     position: relative;
+    /* Làm gốc tọa độ cho giọt nước nhỏ đè lên trên */
     display: inline-block;
 }
 
 .logo-water {
     position: absolute;
+    /* Định vị tuyệt đối dựa theo .logo-heart */
     font-size: 14px;
     color: #ffffff;
     top: 45%;
@@ -54,6 +61,7 @@ header {
     background-color: #54a0ff;
     padding: 4px;
     border-radius: 50%;
+    /* Bo tròn hình tròn */
 }
 
 h1 {
@@ -78,11 +86,14 @@ nav {
     border-radius: 6px;
     font-weight: 500;
     cursor: pointer;
+    /* Đổi con trỏ chuột ->  hình bàn tay khi di chuột vào */
     transition: 0.2s;
+    /* Tạo hiệu ứng mượt mà khi thay đổi trạng thái (như hover) */
     font-size: 14px;
     color: #000;
 }
 
+/* Màu nền riêng biệt cho từng nút tính năng */
 .nav-item.bmi {
     background-color: #c7f0d8;
 }
@@ -95,17 +106,19 @@ nav {
     background-color: #a6d1e6;
 }
 
+/* Hiệu ứng tối đi một chút khi rê chuột vào các nút menu */
 .nav-item:hover {
     filter: brightness(0.95);
 }
 
-/* --- MAIN CONTENT LAYOUT --- */
+/* Main content layout */
 .main-container {
     max-width: 1200px;
     width: 100%;
     margin: 30px auto;
     padding: 0 20px;
     display: grid;
+    /* Chia cột */
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     flex: 1;
@@ -140,7 +153,7 @@ nav {
     border: 1px solid #e0e0e0;
 }
 
-/* --- FORM STYLES --- */
+/* Giao diện form nhập liệu */
 .input-group {
     margin-bottom: 15px;
     width: 100%;
@@ -159,6 +172,7 @@ nav {
     align-items: center;
 }
 
+/* Định dạng ô nhập dữ liệu chữ/số */
 .input-wrapper input {
     width: 100%;
     padding: 8px 40px 8px 12px;
@@ -253,6 +267,7 @@ nav {
     font-size: 26px;
     font-weight: bold;
     display: block;
+    /* Đẩy chữ số thành một dòng riêng */
 }
 
 .progress-text .sub {
@@ -260,7 +275,7 @@ nav {
     color: #333;
 }
 
-/* --- WORKOUT TRACKER --- */
+/* Khối chi tiết phân bổ dữ liệu Luyện tập */
 .workout-card-content {
     padding: 12px;
 }
@@ -310,6 +325,7 @@ nav {
     gap: 10px;
 }
 
+/* Phần thông tin bên trái chiếm 65% độ rộng */
 .left-info {
     width: 65%;
     display: flex;
@@ -317,6 +333,7 @@ nav {
     justify-content: space-between;
 }
 
+/* Chia lưới nhỏ 2 cột để xếp các chỉ số như Quãng đường, Calo... */
 .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -330,6 +347,7 @@ nav {
     gap: 4px;
 }
 
+/* Căn lề phải cho văn bản */
 .text-right {
     justify-content: flex-end;
 }
@@ -355,6 +373,7 @@ nav {
     margin-top: 10px;
 }
 
+/* Khối chứa icon hoạt họa (Animation) chiếm 32% */
 .right-animation {
     width: 32%;
     background-color: #f3faf6;
@@ -367,6 +386,7 @@ nav {
     padding: 15px 0;
 }
 
+/* Áp dụng hiệu ứng nhấp nhô cho icon đang chạy */
 .running-icon {
     animation: jog 0.6s infinite alternate ease-in-out;
 }
@@ -381,7 +401,7 @@ nav {
     }
 }
 
-/* --- FOOTER --- */
+/* Chân trang footer */
 footer {
     background-color: #ffffff;
     padding: 20px 40px;
@@ -389,6 +409,7 @@ footer {
     border-top: 1px solid #eaeaea;
     display: flex;
     justify-content: space-between;
+    /* Đẩy các khối thông tin bản quyền ra hai đầu */
     font-size: 14px;
 }
 
@@ -403,9 +424,10 @@ footer p {
     line-height: 1.5;
 }
 
-/* --- TOAST NOTIFICATION --- */
+/* Hộp thông báo nhanh  */
 .toast-notification {
     position: fixed;
+    /* Định vị cố định so với cửa sổ trình duyệt */
     bottom: 15px;
     left: 15px;
     background-color: white;
@@ -436,8 +458,10 @@ footer p {
     color: #555;
 }
 
+/* Nút X để tắt nhanh thông báo */
 .toast-close {
     position: absolute;
+    /* Đặt tự do trong hộp toast */
     top: 4px;
     right: 8px;
     border: none;
@@ -453,15 +477,18 @@ footer p {
         grid-template-columns: 1fr;
     }
 
+    /* Header chuyển thành dạng hàng dọc, các phần tử xếp chồng lên nhau */
     header {
         flex-direction: column;
         gap: 10px;
     }
 
+    /* Khử định vị của logo để nó chảy tự nhiên theo dòng dọc */
     .logo-container {
         position: static;
     }
 
+    /* Các cột thông tin dưới footer xếp thành một hàng dọc */
     footer {
         flex-direction: column;
         gap: 15px;
