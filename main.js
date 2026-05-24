@@ -1,359 +1,172 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* main.js - jQuery version
+   Giữ nguyên các ID/class HTML hiện tại để hoạt động với cả index.html và index_b2c.html.
+*/
 
-    // lấy ô nhập chiều cao và cân nặng
-    const heightInput =
-        document.getElementById("heightInput");
+$(function () {
+    const $heightInput = $("#heightInput");
+    const $weightInput = $("#weightInput");
+    const $reminderTime = $("#reminderTime");
+    const $waterToast = $("#waterToast");
+    const $stopwatch = $("#stopwatch");
+    const $workoutContainer = $(".workout-card-content");
 
-    const weightInput =
-        document.getElementById("weightInput");
+    let reminder = null;
+    let seconds = 0;
+    let workouts = loadWorkouts();
 
+    // Khôi phục chiều cao/cân nặng đã lưu
+    const savedHeight = localStorage.getItem("height");
+    const savedWeight = localStorage.getItem("weight");
 
-    // hàm tính bmi
+    if (savedHeight) {
+        $heightInput.val(savedHeight);
+    }
+
+    if (savedWeight) {
+        $weightInput.val(savedWeight);
+    }
+
+    // Hàm tính BMI - giữ global vì HTML đang gọi inline: onsubmit="calculateBMI(); return false;"
     window.calculateBMI = function () {
+        const height = parseFloat($heightInput.val());
+        const weight = parseFloat($weightInput.val());
 
-        // lấy dữ liệu người dùng nhập
-        let height =
-            parseFloat(heightInput.value);
-
-        let weight =
-            parseFloat(weightInput.value);
-
-
-        // kiểm tra dữ liệu có trống không
-        if (
-            isNaN(height) ||
-            isNaN(weight)
-        ) {
-            alert(
-                "Vui lòng nhập đầy đủ thông tin!"
-            );
+        if (Number.isNaN(height) || Number.isNaN(weight)) {
+            alert("Vui lòng nhập đầy đủ thông tin!");
             return;
         }
 
-
-        // kiểm tra dữ liệu hợp lệ
-        if (
-            height <= 0 ||
-            weight <= 0
-        ) {
-            alert(
-                "Chiều cao và cân nặng phải lớn hơn 0"
-            );
+        if (height <= 0 || weight <= 0) {
+            alert("Chiều cao và cân nặng phải lớn hơn 0");
             return;
         }
 
-
-        // đổi chiều cao sang mét
-        let heightM =
-            height / 100;
-
-
-        // tính bmi
-        let bmi =
-            weight /
-            (heightM * heightM);
-
-
-        // phân loại bmi
+        const heightM = height / 100;
+        const bmi = weight / (heightM * heightM);
         let category = "";
 
-        if (bmi < 18.5)
+        if (bmi < 18.5) {
             category = "Gầy";
-
-        else if (bmi < 25)
+        } else if (bmi < 25) {
             category = "Bình thường";
-
-        else if (bmi < 30)
+        } else if (bmi < 30) {
             category = "Thừa cân";
-
-        else
+        } else {
             category = "Béo phì";
+        }
 
+        alert(`BMI: ${bmi.toFixed(1)}\nPhân loại: ${category}`);
 
-        // hiện kết quả
-        alert(
-            `BMI: ${bmi.toFixed(1)}
-Phân loại: ${category}`
-        );
-
-
-        // lưu dữ liệu
-        localStorage.setItem(
-            "height",
-            height
-        );
-
-        localStorage.setItem(
-            "weight",
-            weight
-        );
-
+        localStorage.setItem("height", height);
+        localStorage.setItem("weight", weight);
     };
 
+    // Nhắc uống nước
+    $reminderTime.on("change", function () {
+        clearInterval(reminder);
 
-    // lấy dữ liệu đã lưu
+        const minute = parseInt($(this).val(), 10);
 
-    if (
-        localStorage.getItem("height")
-    ) {
+        if (!Number.isNaN(minute) && minute > 0) {
+            reminder = setInterval(function () {
+                $waterToast.css("display", "flex");
+            }, minute * 60000);
+        }
+    });
 
-        heightInput.value =
-            localStorage.getItem(
-                "height"
-            );
-    }
+    // Hàm đóng thông báo - giữ global vì HTML đang gọi inline: onclick="closeToast()"
+    window.closeToast = function () {
+        $waterToast.hide();
+    };
 
+    // Đồng hồ chạy
+    setInterval(function () {
+        seconds += 1;
 
-    if (
-        localStorage.getItem("weight")
-    ) {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = seconds % 60;
 
-        weightInput.value =
-            localStorage.getItem(
-                "weight"
-            );
-    }
+        const formattedTime = `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 
-
-    // tạo nhắc uống nước
-    let reminder;
-
-
-    // chọn thời gian nhắc
-    document
-        .getElementById(
-            "reminderTime"
-        )
-        .addEventListener(
-            "change",
-            function () {
-
-                clearInterval(
-                    reminder
-                );
-
-                let minute =
-                    this.value;
-
-
-                // hiện thông báo
-                reminder =
-                    setInterval(() => {
-
-                        document
-                            .getElementById(
-                                "waterToast"
-                            )
-                            .style.display =
-                            "flex";
-
-                    },
-                        minute * 60000
-                    );
-
-            }
-        );
-
-
-    // hàm đóng thông báo
-    window.closeToast =
-        function () {
-
-            document
-                .getElementById(
-                    "waterToast"
-                )
-                .style.display =
-                "none";
-
-        };
-
-
-    // tạo đồng hồ chạy
-    let seconds = 0;
-
-    setInterval(() => {
-
-        seconds++;
-
-        let h =
-            Math.floor(
-                seconds / 3600
-            );
-
-        let m =
-            Math.floor(
-                (seconds % 3600) / 60
-            );
-
-        let s =
-            seconds % 60;
-
-
-        // hiện thời gian
-        document
-            .getElementById(
-                "stopwatch"
-            )
-            .innerText =
-
-            `${String(h).padStart(2, "0")}
-            :
-            ${String(m).padStart(2, "0")}
-            :
-            ${String(s).padStart(2, "0")}`;
-
+        $stopwatch.text(formattedTime);
+        $stopwatch.attr("datetime", `PT${seconds}S`);
     }, 1000);
 
+    // Thêm bài tập - giữ global vì HTML đang gọi inline: onclick="logWorkout()"
+    window.logWorkout = function () {
+        const exercise = prompt("Nhập bài tập:");
 
-
-    // lấy danh sách tập luyện
-    let workouts =
-        JSON.parse(
-            localStorage.getItem(
-                "workouts"
-            )
-        ) || [];
-
-
-    // hiện danh sách tập
-    function renderWorkout() {
-
-        let old =
-            document.getElementById(
-                "workoutList"
-            );
-
-        if (old) {
-            old.remove();
+        if (!exercise || $.trim(exercise) === "") {
+            return;
         }
 
-        let div =
-            document.createElement(
-                "div"
-            );
+        workouts.push($.trim(exercise));
+        saveWorkouts();
+        renderWorkout();
+    };
 
-        div.id =
-            "workoutList";
+    // Xóa bài tập - giữ global vì các nút xóa gọi inline: onclick="deleteWorkout(index)"
+    window.deleteWorkout = function (index) {
+        workouts.splice(index, 1);
+        saveWorkouts();
+        renderWorkout();
+    };
 
-
-        workouts.forEach(
-            (item, index) => {
-
-                let row =
-                    document.createElement(
-                        "div"
-                    );
-
-                row.innerHTML =
-                    `
-                ${item}
-                <button onclick=
-                "deleteWorkout(${index})">
-                Xóa
-                </button>
-                `;
-
-                div.appendChild(
-                    row
-                );
-
-            }
-        );
-
-        document
-            .querySelector(
-                ".workout-card-content"
-            )
-            .appendChild(
-                div
-            );
-
+    function loadWorkouts() {
+        try {
+            return JSON.parse(localStorage.getItem("workouts")) || [];
+        } catch (error) {
+            console.warn("Không thể đọc danh sách bài tập từ localStorage:", error);
+            return [];
+        }
     }
 
+    function saveWorkouts() {
+        localStorage.setItem("workouts", JSON.stringify(workouts));
+    }
 
-    // thêm bài tập
-    window.logWorkout =
-        function () {
+    function renderWorkout() {
+        $("#workoutList").remove();
 
-            let exercise =
-                prompt(
-                    "Nhập bài tập:"
-                );
+        const $list = $("<div>", {
+            id: "workoutList",
+            class: "mt-3 d-grid gap-2"
+        });
 
-            if (
-                !exercise ||
-                exercise.trim() == ""
-            ) {
-                return;
-            }
+        workouts.forEach(function (item, index) {
+            const $row = $("<div>", {
+                class: "d-flex align-items-center justify-content-between gap-2 p-2 border rounded bg-light"
+            });
 
-            workouts.push(
-                exercise
-            );
+            const $name = $("<span>", {
+                class: "text-break"
+            }).text(item);
 
+            const $deleteButton = $("<button>", {
+                type: "button",
+                class: "btn btn-sm btn-outline-danger",
+                text: "Xóa",
+                click: function () {
+                    window.deleteWorkout(index);
+                }
+            });
 
-            // lưu danh sách
-            localStorage.setItem(
-                "workouts",
-                JSON.stringify(
-                    workouts
-                )
-            );
+            $row.append($name, $deleteButton);
+            $list.append($row);
+        });
 
-            renderWorkout();
-
-        }
-
-
-    // xóa bài tập
-    window.deleteWorkout =
-        function (index) {
-
-            workouts.splice(
-                index,
-                1
-            );
-
-            localStorage.setItem(
-                "workouts",
-                JSON.stringify(
-                    workouts
-                )
-            );
-
-            renderWorkout();
-
-        }
-
+        $workoutContainer.append($list);
+    }
 
     renderWorkout();
 
-
-    // lấy dữ liệu api giả
-    fetch(
-        "https://jsonplaceholder.typicode.com/users/1"
-    )
-
-        .then(
-            response =>
-                response.json()
-        )
-
-        .then(data => {
-
-            console.log(
-                data.name
-            );
-
+    // API giả - chuyển từ fetch sang $.getJSON để dùng jQuery rõ ràng hơn
+    $.getJSON("https://jsonplaceholder.typicode.com/users/1")
+        .done(function (data) {
+            console.log(data.name);
         })
-
-        .catch(error => {
-
-            console.log(
-                error
-            );
-
+        .fail(function (_jqXHR, _textStatus, errorThrown) {
+            console.log(errorThrown);
         });
-
 });

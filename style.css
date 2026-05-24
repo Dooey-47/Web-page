@@ -76,9 +76,9 @@ ul {
 }
 
 .logo-container:focus-visible,
-.nav-item:focus-visible,
+.app-nav-item:focus-visible,
 .menu-card-link:focus-visible,
-.btn:focus-visible,
+.app-btn:focus-visible,
 .toast-close:focus-visible,
 footer a:focus-visible,
 .back-link:focus-visible {
@@ -127,7 +127,7 @@ h1 {
     justify-content: center;
 }
 
-.nav-item {
+.app-nav-item {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -141,19 +141,19 @@ h1 {
     gap: 6px;
 }
 
-.nav-item.bmi {
+.app-nav-item.bmi {
     background-color: #c7f0d8;
 }
 
-.nav-item.water {
+.app-nav-item.water {
     background-color: #83cc9e;
 }
 
-.nav-item.workout {
+.app-nav-item.workout {
     background-color: #a6d1e6;
 }
 
-.nav-item:hover {
+.app-nav-item:hover {
     filter: brightness(0.95);
 }
 
@@ -257,7 +257,7 @@ h1 {
 }
 
 /* --- CARD STYLE --- */
-.card {
+.app-card {
     background-color: #e5f6ed;
     border: 1.5px solid #b2e7ca;
     border-radius: 8px;
@@ -267,7 +267,7 @@ h1 {
     min-width: 0;
 }
 
-.card-title {
+.app-card-title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -386,12 +386,12 @@ h1 {
 }
 
 /* --- FORM STYLES --- */
-.input-group {
+.form-field {
     margin-bottom: 15px;
     width: 100%;
 }
 
-.input-group label {
+.form-field label {
     display: block;
     font-size: 14px;
     color: #333;
@@ -450,7 +450,7 @@ h1 {
 }
 
 /* --- BUTTONS --- */
-.btn {
+.app-btn {
     width: 100%;
     padding: 10px;
     border: none;
@@ -464,12 +464,12 @@ h1 {
     min-height: 44px;
 }
 
-.btn-bmi,
-.btn-log {
+.app-btn-bmi,
+.app-btn-log {
     background-color: #1dd1a1;
 }
 
-.btn:hover {
+.app-btn:hover {
     filter: brightness(0.95);
 }
 
@@ -784,7 +784,7 @@ footer a:hover {
         gap: 8px;
     }
 
-    .nav-item {
+    .app-nav-item {
         padding: 9px 14px;
     }
 
@@ -818,7 +818,7 @@ footer a:hover {
         align-items: stretch;
     }
 
-    .nav-item {
+    .app-nav-item {
         width: 100%;
     }
 
@@ -847,5 +847,110 @@ footer a:hover {
 
     .menu-card {
         transition: none;
+    }
+}
+
+/* --- BOOTSTRAP HYBRID OVERRIDES --- */
+.site-header.navbar {
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    white-space: normal;
+}
+
+.navbar-toggler {
+    border-color: #b2e7ca;
+    border-radius: 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(29, 209, 161, 0.2);
+}
+
+.main-nav.navbar-collapse {
+    flex-grow: 0;
+}
+
+.nav-list.navbar-nav {
+    gap: 12px;
+    align-items: center;
+}
+
+.app-nav-item.nav-link {
+    color: #000;
+}
+
+.app-nav-item.nav-link:hover,
+.app-nav-item.nav-link:focus {
+    color: #000;
+}
+
+.app-dropdown-menu.dropdown-menu {
+    margin-top: 8px;
+}
+
+.app-dropdown-menu .dropdown-item {
+    padding: 9px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.app-dropdown-menu .dropdown-item:hover,
+.app-dropdown-menu .dropdown-item:focus {
+    background-color: #e5f6ed;
+    color: #12856a;
+}
+
+.menu-grid.row {
+    display: flex;
+    gap: 0;
+}
+
+.menu-grid.row > [class*="col-"] {
+    display: flex;
+}
+
+.menu-grid .app-card {
+    height: 100%;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #1dd1a1;
+    box-shadow: 0 0 0 3px rgba(29, 209, 161, 0.2);
+}
+
+.app-btn.btn {
+    border: none;
+}
+
+@media (min-width: 992px) {
+    .nav-dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .main-nav.navbar-collapse {
+        width: 100%;
+        padding-top: 16px;
+    }
+
+    .nav-list.navbar-nav {
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .app-nav-item {
+        width: 100%;
+    }
+
+    .app-dropdown-menu.dropdown-menu {
+        position: static;
+        width: 100%;
+        margin-top: 6px;
+        box-shadow: none;
     }
 }
