@@ -10,6 +10,23 @@
     <title>Sức khỏe cá nhân | Ứng dụng wellness miễn phí</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .hero-cta {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-cta .btn {
+            width: fit-content;
+            min-width: 180px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,9 +43,38 @@
 
         <nav class="main-nav" aria-label="Điều hướng chính">
             <ul class="nav-list">
-                <li><a class="nav-item bmi" href="#features">Tính năng</a></li>
-                <li><a class="nav-item water" href="#how-it-works">Cách hoạt động</a></li>
-                <li><a class="nav-item workout" href="#try-now">Dùng thử</a></li>
+                <li class="nav-dropdown">
+                    <a class="nav-item bmi" href="#features">
+                        Tính năng <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#benefits">Lợi ích chính</a></li>
+                        <li><a href="#features">Bộ công cụ wellness</a></li>
+                        <li><a href="#pricing">Gói miễn phí</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-dropdown">
+                    <a class="nav-item water" href="#how-it-works">
+                        Cách hoạt động <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#how-it-works">Không cần đăng nhập</a></li>
+                        <li><a href="#usage-steps">3 bước sử dụng</a></li>
+                        <li><a href="#try-now">Chọn công cụ</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-dropdown">
+                    <a class="nav-item workout" href="#try-now">
+                        Dùng thử <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#bmi-section">Tính BMI</a></li>
+                        <li><a href="#water-section">Nhắc uống nước</a></li>
+                        <li><a href="#workout-section">Theo dõi tập luyện</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -40,12 +86,12 @@
             <p class="hero-description">
                 Một công cụ miễn phí chạy trực tiếp trên trình duyệt, giúp bạn hiểu cơ thể, duy trì thói quen uống nước và ghi nhận vận động hằng ngày mà không cần đăng nhập.
             </p>
-            <p>
+            <p class="hero-cta">
                 <a class="btn btn-bmi" href="#try-now" aria-label="Bắt đầu dùng thử các công cụ sức khỏe">BẮT ĐẦU NGAY</a>
             </p>
         </section>
 
-        <section class="menu-grid" aria-label="Lợi ích chính của ứng dụng">
+        <section class="menu-grid" id="benefits" aria-label="Lợi ích chính của ứng dụng">
             <article class="card menu-card" aria-labelledby="benefit-private-title">
                 <div class="menu-card-link">
                     <div class="menu-icon bmi-icon" aria-hidden="true">
@@ -161,7 +207,7 @@
             </p>
         </section>
 
-        <section class="menu-grid" aria-label="Các bước sử dụng ứng dụng">
+        <section class="menu-grid" id="usage-steps" aria-label="Các bước sử dụng ứng dụng">
             <article class="card menu-card" aria-labelledby="step-one-title">
                 <div class="menu-card-link">
                     <div class="menu-icon bmi-icon" aria-hidden="true">
@@ -304,7 +350,7 @@
             </div>
         </section>
 
-        <section class="hero-section" aria-labelledby="free-title">
+        <section class="hero-section" id="pricing" aria-labelledby="free-title">
             <p class="eyebrow">Gói miễn phí</p>
             <h2 id="free-title">0đ cho các chức năng cơ bản</h2>
             <p class="hero-description">

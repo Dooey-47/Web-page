@@ -138,6 +138,7 @@ h1 {
     font-size: 14px;
     color: #000;
     min-height: 42px;
+    gap: 6px;
 }
 
 .nav-item.bmi {
@@ -154,6 +155,53 @@ h1 {
 
 .nav-item:hover {
     filter: brightness(0.95);
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 12px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 190px;
+    background-color: #ffffff;
+    border: 1px solid #b2e7ca;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    padding: 8px;
+    display: none;
+    z-index: 20;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
+    background-color: #e5f6ed;
+    color: #12856a;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    display: block;
 }
 
 /* --- MAIN CONTENT LAYOUT --- */
