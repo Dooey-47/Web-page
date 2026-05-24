@@ -4,70 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SỨC KHỎE CÁ NHÂN</title>
+    <meta name="description" content="Ứng dụng sức khỏe cá nhân hỗ trợ tính BMI, nhắc nhở uống nước và theo dõi chế độ tập luyện hằng ngày.">
+    <meta name="keywords" content="sức khỏe cá nhân, BMI, uống nước, tập luyện, theo dõi sức khỏe">
+    <meta name="author" content="Nhóm phát triển Sức khỏe cá nhân">
+    <title>Sức khỏe cá nhân | Tính BMI, uống nước và tập luyện</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-    <header>
-
-        <div class="header-left">
-            <div class="logo-container">
-                <i class="fa-solid fa-heart logo-heart">
-                    <i class="fa-solid fa-droplet logo-water"></i>
-                </i>
-            </div>
+    <header class="site-header">
+        <div class="header-left" aria-label="Sức khỏe cá nhân">
+            <a class="logo-container" href="#main-content" aria-label="Đi đến nội dung chính">
+                <span class="logo-heart fa-solid fa-heart" aria-hidden="true">
+                    <i class="fa-solid fa-droplet logo-water" aria-hidden="true"></i>
+                </span>
+            </a>
 
             <h1>SỨC KHỎE CÁ NHÂN</h1>
         </div>
 
-        <nav>
-            <div class="nav-item bmi">BMI</div>
-            <div class="nav-item water">Uống nước</div>
-            <div class="nav-item workout">Tập luyện</div>
+        <nav class="main-nav" aria-label="Chức năng chính">
+            <ul class="nav-list">
+                <li><a class="nav-item bmi" href="#bmi-section">BMI</a></li>
+                <li><a class="nav-item water" href="#water-section">Uống nước</a></li>
+                <li><a class="nav-item workout" href="#workout-section">Tập luyện</a></li>
+            </ul>
         </nav>
-
     </header>
 
-    <div class="main-container">
+    <main id="main-content" class="main-container">
+        <section class="card" id="bmi-section" aria-labelledby="bmi-title">
+            <h2 class="card-title" id="bmi-title">Tính toán BMI</h2>
+            <form class="sub-card" aria-describedby="bmi-description" onsubmit="calculateBMI(); return false;">
+                <p class="visually-hidden" id="bmi-description">Nhập chiều cao và cân nặng để tính chỉ số BMI.</p>
 
-        <div class="card">
-            <div class="card-title">Tính toán BMI</div>
-            <div class="sub-card">
                 <div class="input-group">
-                    <label>Nhập chiều cao</label>
+                    <label for="heightInput">Nhập chiều cao</label>
                     <div class="input-wrapper">
-                        <input type="number" id="heightInput" value="170">
-                        <span class="unit">cm</span>
+                        <input type="number" id="heightInput" name="height" value="170" min="1" inputmode="decimal" aria-describedby="height-unit">
+                        <span class="unit" id="height-unit">cm</span>
                     </div>
                 </div>
+
                 <div class="input-group">
-                    <label>Nhập cân nặng</label>
+                    <label for="weightInput">Nhập cân nặng</label>
                     <div class="input-wrapper">
-                        <input type="number" id="weightInput" value="60">
-                        <span class="unit">kg</span>
+                        <input type="number" id="weightInput" name="weight" value="60" min="1" inputmode="decimal" aria-describedby="weight-unit">
+                        <span class="unit" id="weight-unit">kg</span>
                     </div>
                 </div>
-                <button class="btn btn-bmi" onclick="calculateBMI()">TÍNH BMI</button>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-title">Nhắc nhở uống nước</div>
+                <button class="btn btn-bmi" type="submit">TÍNH BMI</button>
+            </form>
+        </section>
+
+        <section class="card" id="water-section" aria-labelledby="water-title">
+            <h2 class="card-title" id="water-title">Nhắc nhở uống nước</h2>
             <div class="sub-card">
-                <div class="progress-circle" id="waterCircle">
-                    <div class="progress-text">
+                <div class="progress-circle" id="waterCircle" role="img" aria-label="Tiến độ uống nước trong ngày đạt 75 phần trăm">
+                    <div class="progress-text" aria-hidden="true">
                         <span class="number" id="waterAmount">100</span>
                         <span class="sub">nước ngày</span>
                     </div>
                 </div>
 
                 <div class="input-group select-group">
-                    <label>Thời gian khoảng nhắc nhở:</label>
+                    <label for="reminderTime">Thời gian khoảng nhắc nhở:</label>
                     <div class="input-wrapper">
-                        <select id="reminderTime">
+                        <select id="reminderTime" name="reminderTime">
                             <option value="10">10 phút</option>
                             <option value="30">30 phút</option>
                             <option value="60">60 phút</option>
@@ -75,85 +80,92 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <div class="card-title">Theo dõi chế độ tập luyện</div>
+        <section class="card" id="workout-section" aria-labelledby="workout-title">
+            <h2 class="card-title" id="workout-title">Theo dõi chế độ tập luyện</h2>
             <div class="sub-card workout-card-content">
-                <div class="workout-header">
+                <article class="workout-header" aria-label="Thông tin buổi tập">
                     <div class="workout-header-left">
-                        <div class="running-circle">
+                        <div class="running-circle" aria-hidden="true">
                             <i class="fa-solid fa-person-running"></i>
                         </div>
                         <div>
-                            <div class="workout-header-title">Tập Luyện</div>
-                            <div class="workout-header-sub">20 min 1 lần</div>
+                            <h3 class="workout-header-title">Tập Luyện</h3>
+                            <p class="workout-header-sub">20 min 1 lần</p>
                         </div>
                     </div>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </article>
 
-                <div class="workout-detail-box">
+                <article class="workout-detail-box" aria-label="Chi tiết hoạt động tập luyện">
                     <div class="left-info">
-                        <div class="info-grid">
+                        <dl class="info-grid">
                             <div class="info-item">
-                                <span class="status-icon"><i class="fa-solid fa-circle-check"></i></span>
-                                <span class="info-text">Kảo ông đầy trạng</span>
+                                <dt class="visually-hidden">Trạng thái</dt>
+                                <dd>
+                                    <span class="status-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                                    <span class="info-text">Hoàn thành trạng thái</span>
+                                </dd>
                             </div>
                             <div class="info-item text-right">
-                                <span class="label-gray">Thời gian</span>
+                                <dt class="label-gray">Thời gian</dt>
                             </div>
                             <div class="info-item">
-                                <span class="info-text"><i class="fa-solid fa-fire" style="color: #ff7675;"></i> 146
-                                    calories</span>
+                                <dt class="visually-hidden">Năng lượng tiêu thụ</dt>
+                                <dd class="info-text"><i class="fa-solid fa-fire fire-icon" aria-hidden="true"></i> 146 calories</dd>
                             </div>
                             <div class="info-item text-right">
-                                <strong class="time-big">30 min</strong>
+                                <dd><strong class="time-big">30 min</strong></dd>
                             </div>
-                        </div>
+                        </dl>
 
-                        <div class="stopwatch-row">
-                            <i class="fa-solid fa-stopwatch" style="color: #1dd1a1;"></i>
-                            <span id="stopwatch">00:00:03</span>
-                        </div>
+                        <p class="stopwatch-row">
+                            <i class="fa-solid fa-stopwatch stopwatch-icon" aria-hidden="true"></i>
+                            <span class="visually-hidden">Đồng hồ bấm giờ:</span>
+                            <time id="stopwatch" datetime="PT3S">00:00:03</time>
+                        </p>
                     </div>
 
-                    <div class="right-animation">
+                    <div class="right-animation" aria-hidden="true">
                         <i class="fa-solid fa-person-running running-icon"></i>
                     </div>
-                </div>
+                </article>
 
-                <button class="btn btn-log" onclick="logWorkout()">LOG MỚI</button>
+                <button class="btn btn-log" type="button" onclick="logWorkout()">LOG MỚI</button>
             </div>
-        </div>
+        </section>
+    </main>
 
-    </div>
-
-    <footer>
-        <div class="footer-left">
-            <h4>Liên hệ</h4>
-            <p>Hạn nhìn: 090 2768 830</p>
-            <p>Email: nhom@gmail.com</p>
-            <p>Gmail: nam@gmail.com</p>
-        </div>
-        <div class="footer-right">
-            <h4>Thông tin nhóm</h4>
-            <p>Nguyễn Trần Khánh Duy</p>
-            <p>Hứa Quốc Vượng</p>
-            <p>Nguyễn Hữu Anh Tuấn</p>
-        </div>
+    <footer class="site-footer">
+        <section class="footer-left" aria-labelledby="contact-title">
+            <h2 id="contact-title">Liên hệ</h2>
+            <address>
+                <p>Hạn nhìn: <a href="tel:0902768830">090 2768 830</a></p>
+                <p>Email: <a href="mailto:nhom@gmail.com">nhom@gmail.com</a></p>
+                <p>Gmail: <a href="mailto:nam@gmail.com">nam@gmail.com</a></p>
+            </address>
+        </section>
+        <section class="footer-right" aria-labelledby="group-title">
+            <h2 id="group-title">Thông tin nhóm</h2>
+            <ul>
+                <li>Nguyễn Trần Khánh Duy</li>
+                <li>Hứa Quốc Vượng</li>
+                <li>Nguyễn Hữu Anh Tuấn</li>
+            </ul>
+        </section>
     </footer>
 
-    <div class="toast-notification" id="waterToast">
-        <button class="toast-close" onclick="closeToast()">&times;</button>
-        <div class="toast-icon">
+    <aside class="toast-notification" id="waterToast" role="status" aria-live="polite" aria-label="Thông báo nhắc nhở uống nước">
+        <button class="toast-close" type="button" onclick="closeToast()" aria-label="Đóng thông báo">&times;</button>
+        <div class="toast-icon" aria-hidden="true">
             <i class="fa-solid fa-glass-water"></i>
         </div>
         <div class="toast-content">
-            <h5>Dônk Reminder 💧</h5>
+            <h2>Dônk Reminder 💧</h2>
             <p>Nhắc nhở uống tli ngày 💧</p>
         </div>
-    </div>
+    </aside>
 
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>

@@ -6,53 +6,94 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #f3faf6;
     color: #333;
     min-height: 100vh;
     display: flex;
-    /* Sử dụng Flexbox để dễ sắp xếp các thành phần con */
     flex-direction: column;
-    /* Sắp xếp các thành phần con theo chiều dọc (Header -> Main -> Footer) */
     position: relative;
+    line-height: 1.5;
 }
 
-/* Thanh tiêu đề */
-header {
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.visually-hidden {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    position: absolute;
+}
+
+/* --- HEADER --- */
+.site-header {
     background-color: #ffffff;
     padding: 15px 40px;
     display: flex;
-    /* Dùng flexbox căn chỉnh các khối bên trong */
     align-items: center;
-    /* Căn giữa các phần tử trong header theo chiều dọc */
+    justify-content: space-between;
+    gap: 24px;
     border-bottom: 1px solid #eaeaea;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-/* Khối Logo và Tiêu đề bên trái */
+/* LEFT SIDE */
 .header-left {
     display: flex;
     align-items: center;
     gap: 15px;
-    /* Tạo khoảng cách 15px giữa logo và chữ h1 */
+    min-width: max-content;
 }
 
 .logo-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    border-radius: 50%;
+}
+
+.logo-container:focus-visible,
+.nav-item:focus-visible,
+.btn:focus-visible,
+.toast-close:focus-visible,
+footer a:focus-visible {
+    outline: 3px solid #1dd1a1;
+    outline-offset: 3px;
 }
 
 .logo-heart {
     font-size: 38px;
     color: #ff7675;
     position: relative;
-    /* Làm gốc tọa độ cho giọt nước nhỏ đè lên trên */
     display: inline-block;
+    line-height: 1;
 }
 
 .logo-water {
     position: absolute;
-    /* Định vị tuyệt đối dựa theo .logo-heart */
     font-size: 14px;
     color: #ffffff;
     top: 45%;
@@ -61,39 +102,42 @@ header {
     background-color: #54a0ff;
     padding: 4px;
     border-radius: 50%;
-    /* Bo tròn hình tròn */
 }
 
 h1 {
-    font-size: 30px;
+    font-size: clamp(22px, 3vw, 30px);
     font-weight: bold;
     margin: 0;
+    line-height: 1.2;
 }
 
 /* CENTER NAVBAR */
-nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.main-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
     display: flex;
     gap: 12px;
     align-items: center;
-    background: transparent;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 22px;
     border-radius: 6px;
     font-weight: 500;
-    cursor: pointer;
-    /* Đổi con trỏ chuột ->  hình bàn tay khi di chuột vào */
     transition: 0.2s;
-    /* Tạo hiệu ứng mượt mà khi thay đổi trạng thái (như hover) */
     font-size: 14px;
     color: #000;
+    min-height: 42px;
 }
 
-/* Màu nền riêng biệt cho từng nút tính năng */
 .nav-item.bmi {
     background-color: #c7f0d8;
 }
@@ -106,20 +150,18 @@ nav {
     background-color: #a6d1e6;
 }
 
-/* Hiệu ứng tối đi một chút khi rê chuột vào các nút menu */
 .nav-item:hover {
     filter: brightness(0.95);
 }
 
-/* Main content layout */
+/* --- MAIN CONTENT LAYOUT --- */
 .main-container {
     max-width: 1200px;
     width: 100%;
     margin: 30px auto;
     padding: 0 20px;
     display: grid;
-    /* Chia cột */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
     flex: 1;
 }
@@ -127,12 +169,12 @@ nav {
 /* --- CARD STYLE --- */
 .card {
     background-color: #e5f6ed;
-    /* Màu xanh nền card */
     border: 1.5px solid #b2e7ca;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 15px;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .card-title {
@@ -140,6 +182,7 @@ nav {
     font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
+    line-height: 1.3;
 }
 
 .sub-card {
@@ -153,7 +196,7 @@ nav {
     border: 1px solid #e0e0e0;
 }
 
-/* Giao diện form nhập liệu */
+/* --- FORM STYLES --- */
 .input-group {
     margin-bottom: 15px;
     width: 100%;
@@ -172,32 +215,36 @@ nav {
     align-items: center;
 }
 
-/* Định dạng ô nhập dữ liệu chữ/số */
-.input-wrapper input {
+.input-wrapper input,
+.input-wrapper select {
     width: 100%;
-    padding: 8px 40px 8px 12px;
     border: 1px solid #cccccc;
     border-radius: 6px;
     font-size: 15px;
     outline: none;
 }
 
+.input-wrapper input {
+    padding: 8px 40px 8px 12px;
+}
+
 .input-wrapper select {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    font-size: 15px;
-    outline: none;
+    padding: 8px 36px 8px 12px;
     background-color: #f5f5f5;
     appearance: none;
     -webkit-appearance: none;
 }
 
-/* Tạo mũi tên xuống cho thẻ select giống hình */
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    border-color: #1dd1a1;
+    box-shadow: 0 0 0 3px rgba(29, 209, 161, 0.2);
+}
+
+/* Tạo mũi tên xuống cho thẻ select giống hình bằng Font Awesome */
 .select-group .input-wrapper::after {
     content: "\f078";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Free";
     font-weight: 900;
     position: absolute;
     right: 12px;
@@ -225,14 +272,16 @@ nav {
     cursor: pointer;
     text-align: center;
     margin-top: auto;
+    min-height: 44px;
 }
 
-.btn-bmi {
-    background-color: #1dd1a1;
-}
-
+.btn-bmi,
 .btn-log {
     background-color: #1dd1a1;
+}
+
+.btn:hover {
+    filter: brightness(0.95);
 }
 
 /* --- WATER TRACKER --- */
@@ -246,6 +295,7 @@ nav {
     align-items: center;
     justify-content: center;
     margin: 10px auto 25px auto;
+    flex-shrink: 0;
 }
 
 .progress-circle::before {
@@ -267,7 +317,6 @@ nav {
     font-size: 26px;
     font-weight: bold;
     display: block;
-    /* Đẩy chữ số thành một dòng riêng */
 }
 
 .progress-text .sub {
@@ -275,7 +324,7 @@ nav {
     color: #333;
 }
 
-/* Khối chi tiết phân bổ dữ liệu Luyện tập */
+/* --- WORKOUT TRACKER --- */
 .workout-card-content {
     padding: 12px;
 }
@@ -306,6 +355,7 @@ nav {
     align-items: center;
     justify-content: center;
     font-size: 16px;
+    flex-shrink: 0;
 }
 
 .workout-header-title {
@@ -325,34 +375,48 @@ nav {
     gap: 10px;
 }
 
-/* Phần thông tin bên trái chiếm 65% độ rộng */
 .left-info {
     width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-width: 0;
 }
 
-/* Chia lưới nhỏ 2 cột để xếp các chỉ số như Quãng đường, Calo... */
 .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 8px;
+    column-gap: 8px;
     font-size: 13px;
 }
 
-.info-item {
+.info-item,
+.info-item dd {
     display: flex;
     align-items: center;
     gap: 4px;
+    min-width: 0;
 }
 
-/* Căn lề phải cho văn bản */
+.info-item dd {
+    margin: 0;
+}
+
 .text-right {
     justify-content: flex-end;
+    text-align: right;
 }
 
 .status-icon {
+    color: #1dd1a1;
+}
+
+.fire-icon {
+    color: #ff7675;
+}
+
+.stopwatch-icon {
     color: #1dd1a1;
 }
 
@@ -373,7 +437,6 @@ nav {
     margin-top: 10px;
 }
 
-/* Khối chứa icon hoạt họa (Animation) chiếm 32% */
 .right-animation {
     width: 32%;
     background-color: #f3faf6;
@@ -384,9 +447,9 @@ nav {
     font-size: 35px;
     color: #333;
     padding: 15px 0;
+    min-width: 70px;
 }
 
-/* Áp dụng hiệu ứng nhấp nhô cho icon đang chạy */
 .running-icon {
     animation: jog 0.6s infinite alternate ease-in-out;
 }
@@ -401,33 +464,41 @@ nav {
     }
 }
 
-/* Chân trang footer */
-footer {
+/* --- FOOTER --- */
+.site-footer {
     background-color: #ffffff;
     padding: 20px 40px;
     margin-top: auto;
     border-top: 1px solid #eaeaea;
     display: flex;
     justify-content: space-between;
-    /* Đẩy các khối thông tin bản quyền ra hai đầu */
+    gap: 24px;
     font-size: 14px;
 }
 
-footer h4 {
+footer h2 {
     font-size: 15px;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-footer p {
+footer p,
+footer li {
     color: #333;
     line-height: 1.5;
 }
 
-/* Hộp thông báo nhanh  */
+address {
+    font-style: normal;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- TOAST NOTIFICATION --- */
 .toast-notification {
     position: fixed;
-    /* Định vị cố định so với cửa sổ trình duyệt */
     bottom: 15px;
     left: 15px;
     background-color: white;
@@ -439,7 +510,7 @@ footer p {
     gap: 12px;
     z-index: 1000;
     border: 1px solid #e0e0e0;
-    width: 260px;
+    width: min(260px, calc(100% - 30px));
 }
 
 .toast-icon {
@@ -447,7 +518,7 @@ footer p {
     color: #54a0ff;
 }
 
-.toast-content h5 {
+.toast-content h2 {
     font-size: 13px;
     font-weight: bold;
     margin-bottom: 1px;
@@ -458,10 +529,8 @@ footer p {
     color: #555;
 }
 
-/* Nút X để tắt nhanh thông báo */
 .toast-close {
     position: absolute;
-    /* Đặt tự do trong hộp toast */
     top: 4px;
     right: 8px;
     border: none;
@@ -469,29 +538,114 @@ footer p {
     cursor: pointer;
     color: #999;
     font-size: 16px;
+    min-width: 32px;
+    min-height: 32px;
 }
 
 /* RESPONSIVE LAYOUT */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .main-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Header chuyển thành dạng hàng dọc, các phần tử xếp chồng lên nhau */
-    header {
+    #workout-section {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 900px) {
+    .site-header {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        padding: 16px 20px;
     }
 
-    /* Khử định vị của logo để nó chảy tự nhiên theo dòng dọc */
-    .logo-container {
-        position: static;
+    .header-left {
+        justify-content: center;
+        min-width: 0;
     }
 
-    /* Các cột thông tin dưới footer xếp thành một hàng dọc */
-    footer {
+    .site-footer {
         flex-direction: column;
         gap: 15px;
         padding: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        margin: 20px auto;
+        padding: 0 14px;
+    }
+
+    #workout-section {
+        grid-column: auto;
+    }
+
+    .nav-list {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .nav-item {
+        padding: 9px 14px;
+    }
+
+    .workout-detail-box {
+        flex-direction: column;
+    }
+
+    .left-info,
+    .right-animation {
+        width: 100%;
+    }
+
+    .right-animation {
+        min-height: 90px;
+    }
+}
+
+@media (max-width: 420px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .header-left {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .sub-card {
+        padding: 16px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .text-right {
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .running-icon {
+        animation: none;
     }
 }
