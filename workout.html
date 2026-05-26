@@ -116,7 +116,53 @@
                     <div class="right-animation" aria-hidden="true"><i class="fa-solid fa-person-running running-icon"></i></div>
                 </article>
 
-                <button class="btn app-btn btn-log" type="button" onclick="logWorkout()">LOG MỚI</button>
+                <form class="workout-log-form" id="workoutForm" autocomplete="off">
+                    <div class="form-row two-columns">
+                        <div class="form-field">
+                            <label for="exerciseName">Tên bài tập</label>
+                            <input class="form-control" id="exerciseName" name="exerciseName" type="text" placeholder="Ví dụ: Chạy bộ" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="exerciseType">Loại bài tập</label>
+                            <select class="form-select" id="exerciseType" name="exerciseType">
+                                <option value="Cardio">Cardio</option>
+                                <option value="Sức mạnh">Sức mạnh</option>
+                                <option value="Giãn cơ">Giãn cơ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row three-columns">
+                        <div class="form-field">
+                            <label for="exerciseDuration">Thời gian</label>
+                            <div class="input-wrapper">
+                                <input class="form-control" id="exerciseDuration" name="exerciseDuration" type="number" min="1" placeholder="30" required>
+                                <span class="unit">phút</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="exerciseCalories">Calories</label>
+                            <div class="input-wrapper">
+                                <input class="form-control" id="exerciseCalories" name="exerciseCalories" type="number" min="0" placeholder="146">
+                                <span class="unit">kcal</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="exerciseDate">Ngày tập</label>
+                            <input class="form-control" id="exerciseDate" name="exerciseDate" type="date">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="exerciseNote">Ghi chú</label>
+                        <textarea class="form-control" id="exerciseNote" name="exerciseNote" rows="2" placeholder="Ví dụ: Chạy nhẹ buổi sáng, cảm thấy ổn hơn hôm qua"></textarea>
+                    </div>
+
+                    <button class="btn app-btn btn-log" type="submit">TẠO LOG TẬP LUYỆN</button>
+                    <p class="workout-status" id="workoutStatus" role="status" aria-live="polite"></p>
+                </form>
+                <div id="workoutList" class="workout-list" aria-live="polite"></div>
             </div>
         </section>
 
@@ -124,7 +170,7 @@
             <article class="training-card">
                 <i class="fa-solid fa-list-check"></i>
                 <h3>Ghi nhanh</h3>
-                <p>Thêm và xóa bài tập ngay trên trang bằng jQuery hiện có.</p>
+                <p>Tạo log có tên bài tập, loại bài, thời gian, calories, ngày tập và ghi chú.</p>
             </article>
             <article class="training-card">
                 <i class="fa-solid fa-stopwatch"></i>
@@ -134,7 +180,7 @@
             <article class="training-card">
                 <i class="fa-solid fa-database"></i>
                 <h3>Lưu local</h3>
-                <p>Danh sách bài tập được lưu trong localStorage.</p>
+                <p>Các log tập luyện được lưu trong localStorage để không mất khi tải lại trang.</p>
             </article>
         </section>
     </main>
