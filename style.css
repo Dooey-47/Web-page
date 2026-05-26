@@ -1,4 +1,5 @@
 /* --- RESET & GLOBAL STYLES --- */
+/* Thẻ <body> và toàn bộ trang, ảnh hưởng đến reset margin/padding, box-sizing và font chữ toàn trang */
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +7,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Thuộc thẻ <html>, ảnh hưởng đến hiệu ứng cuộn mượt mà */
 html {
     scroll-behavior: smooth;
 }
 
+/* Thuộc thẻ <body>, ảnh hưởng đến màu nền, màu chữ, chiều cao tối thiểu, hiển thị flex và khoảng cách dòng */
 body {
     background-color: #f3faf6;
     color: #333;
@@ -20,21 +23,25 @@ body {
     line-height: 1.5;
 }
 
+/* Thuộc thẻ <a>, ảnh hưởng đến màu sắc và gạch chân của liên kết */
 a {
     color: inherit;
     text-decoration: none;
 }
 
+/* Thuộc thẻ <button>, <input>, <select>, ảnh hưởng đến font chữ kế thừa */
 button,
 input,
 select {
     font: inherit;
 }
 
+/* Thuộc thẻ <ul>, ảnh hưởng đến gạch đầu dòng */
 ul {
     list-style: none;
 }
 
+/* Lớp utility, ảnh hưởng đến các phần tử cần ẩn nhưng vẫn hiển thị cho trình đọc màn hình */
 .visually-hidden {
     width: 1px;
     height: 1px;
@@ -48,6 +55,7 @@ ul {
 }
 
 /* --- HEADER --- */
+/* Thuộc thẻ <header> và lớp .site-header, ảnh hưởng đến header chính của trang */
 .site-header {
     background-color: #ffffff;
     padding: 15px 40px;
@@ -62,6 +70,7 @@ ul {
 }
 
 /* LEFT SIDE */
+/* Thuộc lớp .header-left (phần bên trái của header, chứa logo và tiêu đề) */
 .header-left {
     display: flex;
     align-items: center;
@@ -69,12 +78,14 @@ ul {
     min-width: max-content;
 }
 
+/* Thuộc lớp .logo-container (vòng tròn chứa logo trái tim và giọt nước) */
 .logo-container {
     display: inline-flex;
     align-items: center;
     border-radius: 50%;
 }
 
+/* Ảnh hưởng đến trạng thái focus của nhiều phần tử tương tác (logo, nav items, card links, buttons...) để tăng accessibility */
 .logo-container:focus-visible,
 .app-nav-item:focus-visible,
 .menu-card-link:focus-visible,
@@ -86,6 +97,7 @@ footer a:focus-visible,
     outline-offset: 3px;
 }
 
+/* Thuộc lớp .logo-heart (icon trái tim trong logo) */
 .logo-heart {
     font-size: 38px;
     color: #ff7675;
@@ -94,6 +106,7 @@ footer a:focus-visible,
     line-height: 1;
 }
 
+/* Thuộc lớp .logo-water (icon giọt nước nhỏ bên trong trái tim) */
 .logo-water {
     position: absolute;
     font-size: 14px;
@@ -106,6 +119,7 @@ footer a:focus-visible,
     border-radius: 50%;
 }
 
+/* Thuộc thẻ <h1> (tiêu đề "SỨC KHỎE CÁ NHÂN" trong header) */
 h1 {
     font-size: clamp(22px, 3vw, 30px);
     font-weight: bold;
@@ -114,11 +128,13 @@ h1 {
 }
 
 /* CENTER NAVBAR */
+/* Thuộc lớp .main-nav (vùng chứa menu điều hướng chính) */
 .main-nav {
     display: flex;
     justify-content: center;
 }
 
+/* Thuộc lớp .nav-list (danh sách các mục điều hướng) */
 .nav-list {
     display: flex;
     gap: 12px;
@@ -127,6 +143,7 @@ h1 {
     justify-content: center;
 }
 
+/* Thuộc lớp .app-nav-item (từng mục điều hướng BMI, Uống nước, Tập luyện) */
 .app-nav-item {
     display: inline-flex;
     align-items: center;
@@ -141,6 +158,7 @@ h1 {
     gap: 6px;
 }
 
+/* Biến thể màu cho từng mục điều hướng */
 .app-nav-item.bmi {
     background-color: #c7f0d8;
 }
@@ -157,10 +175,12 @@ h1 {
     filter: brightness(0.95);
 }
 
+/* Thuộc lớp .nav-dropdown (phần tử cha chứa dropdown menu) */
 .nav-dropdown {
     position: relative;
 }
 
+/* Tạo khoảng cách vùng đệm để hover dễ dàng hơn */
 .nav-dropdown::after {
     content: "";
     position: absolute;
@@ -170,6 +190,7 @@ h1 {
     height: 12px;
 }
 
+/* Thuộc lớp .dropdown-menu (menu thả xuống) */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -199,12 +220,14 @@ h1 {
     color: #12856a;
 }
 
+/* Hiển thị dropdown khi hover hoặc focus */
 .nav-dropdown:hover .dropdown-menu,
 .nav-dropdown:focus-within .dropdown-menu {
     display: block;
 }
 
 /* --- MAIN CONTENT LAYOUT --- */
+/* Thuộc lớp .main-container (vùng chứa nội dung chính của trang) */
 .main-container {
     max-width: 1200px;
     width: 100%;
@@ -213,12 +236,14 @@ h1 {
     flex: 1;
 }
 
+/* Thuộc lớp .menu-page (trang menu chính) */
 .menu-page {
     display: flex;
     flex-direction: column;
     gap: 28px;
 }
 
+/* Thuộc lớp .hero-section (phần giới thiệu ở đầu trang) */
 .hero-section {
     background-color: #ffffff;
     border: 1.5px solid #b2e7ca;
@@ -250,6 +275,7 @@ h1 {
     margin: 0 auto;
 }
 
+/* Menu grid - hiển thị 3 cột */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -257,6 +283,7 @@ h1 {
 }
 
 /* --- CARD STYLE --- */
+/* Thuộc lớp .app-card (thẻ chung cho tất cả các card tính năng) */
 .app-card {
     background-color: #e5f6ed;
     border: 1.5px solid #b2e7ca;
@@ -274,6 +301,7 @@ h1 {
     line-height: 1.3;
 }
 
+/* Thuộc lớp .menu-card (thẻ menu chính, có hiệu ứng hover) */
 .menu-card {
     padding: 0;
     overflow: hidden;
@@ -285,6 +313,7 @@ h1 {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
+/* Thuộc lớp .menu-card-link (liên kết bên trong thẻ menu) */
 .menu-card-link {
     min-height: 240px;
     padding: 24px;
@@ -294,6 +323,7 @@ h1 {
     position: relative;
 }
 
+/* Thuộc lớp .menu-icon (icon hình tròn trong thẻ menu) */
 .menu-icon {
     width: 64px;
     height: 64px;
@@ -305,6 +335,7 @@ h1 {
     flex-shrink: 0;
 }
 
+/* Màu sắc cho từng icon menu */
 .bmi-icon {
     background-color: #c7f0d8;
     color: #12856a;
@@ -329,6 +360,7 @@ h1 {
     font-size: 15px;
 }
 
+/* Nút mũi tên ở cuối thẻ menu */
 .menu-arrow {
     align-self: flex-end;
     width: 34px;
@@ -341,6 +373,7 @@ h1 {
     justify-content: center;
 }
 
+/* Thuộc lớp .sub-card (card con bên trong các phần tính năng BMI, nước, tập luyện) */
 .sub-card {
     background-color: #ffffff;
     border-radius: 8px;
@@ -352,8 +385,8 @@ h1 {
     border: 1px solid #e0e0e0;
 }
 
-
 /* --- SINGLE-PAGE FEATURE SECTIONS --- */
+/* Thuộc lớp .feature-view (các phần tính năng chi tiết BMI, Water, Workout, ẩn mặc định, hiện khi được target) */
 .feature-view {
     width: min(100%, 560px);
     margin: 0 auto;
@@ -365,6 +398,7 @@ h1 {
     display: flex;
 }
 
+/* Nút quay về menu */
 .back-link {
     width: fit-content;
     display: inline-flex;
@@ -379,13 +413,8 @@ h1 {
     text-decoration: underline;
 }
 
-.back-link:focus-visible {
-    outline: 3px solid #1dd1a1;
-    outline-offset: 3px;
-    border-radius: 4px;
-}
-
 /* --- FORM STYLES --- */
+/* Thuộc lớp .form-field (các trường nhập liệu) */
 .form-field {
     margin-bottom: 15px;
     width: 100%;
@@ -398,6 +427,7 @@ h1 {
     margin-bottom: 8px;
 }
 
+/* Wrapper bao quanh input và unit */
 .input-wrapper {
     position: relative;
     display: flex;
@@ -430,7 +460,7 @@ h1 {
     box-shadow: 0 0 0 3px rgba(29, 209, 161, 0.2);
 }
 
-/* Tạo mũi tên xuống cho thẻ select giống hình bằng Font Awesome */
+/* Mũi tên tùy chỉnh cho thẻ select */
 .select-group .input-wrapper::after {
     content: "\f078";
     font-family: "Font Awesome 6 Free";
@@ -442,6 +472,7 @@ h1 {
     pointer-events: none;
 }
 
+/* Đơn vị đo (cm, kg) bên trong input */
 .input-wrapper .unit {
     position: absolute;
     right: 12px;
@@ -450,6 +481,7 @@ h1 {
 }
 
 /* --- BUTTONS --- */
+/* Thuộc lớp .app-btn (nút bấm chung) */
 .app-btn {
     width: 100%;
     padding: 10px;
@@ -474,6 +506,7 @@ h1 {
 }
 
 /* --- WATER TRACKER --- */
+/* Thuộc lớp .progress-circle (vòng tròn hiển thị tiến độ uống nước) */
 .progress-circle {
     position: relative;
     width: 140px;
@@ -487,6 +520,7 @@ h1 {
     flex-shrink: 0;
 }
 
+/* Lớp giả tạo vòng tròn trắng bên trong */
 .progress-circle::before {
     content: "";
     position: absolute;
@@ -514,6 +548,7 @@ h1 {
 }
 
 /* --- WORKOUT TRACKER --- */
+/* Các lớp liên quan đến phần theo dõi tập luyện */
 .workout-card-content {
     padding: 12px;
 }
@@ -639,6 +674,7 @@ h1 {
     min-width: 70px;
 }
 
+/* Hiệu ứng chạy cho icon người chạy */
 .running-icon {
     animation: jog 0.6s infinite alternate ease-in-out;
 }
@@ -654,6 +690,7 @@ h1 {
 }
 
 /* --- FOOTER --- */
+/* Thuộc thẻ <footer> và lớp .site-footer */
 .site-footer {
     background-color: #ffffff;
     padding: 20px 40px;
@@ -686,6 +723,7 @@ footer a:hover {
 }
 
 /* --- TOAST NOTIFICATION --- */
+/* Thuộc lớp .toast-notification (thông báo nổi ở góc dưới bên trái) */
 .toast-notification {
     position: fixed;
     bottom: 15px;
@@ -731,7 +769,8 @@ footer a:hover {
     min-height: 32px;
 }
 
-/* RESPONSIVE LAYOUT */
+/* --- RESPONSIVE LAYOUT --- */
+/* Media query cho màn hình dưới 1000px, ảnh hưởng đến grid menu */
 @media (max-width: 1000px) {
     .menu-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -742,6 +781,7 @@ footer a:hover {
     }
 }
 
+/* Media query cho màn hình dưới 900px, ảnh hưởng đến header và footer */
 @media (max-width: 900px) {
     .site-header {
         flex-direction: column;
@@ -761,6 +801,7 @@ footer a:hover {
     }
 }
 
+/* Media query cho màn hình dưới 640px, ảnh hưởng đến nhiều thành phần */
 @media (max-width: 640px) {
     .main-container {
         margin: 20px auto;
@@ -802,6 +843,7 @@ footer a:hover {
     }
 }
 
+/* Media query cho màn hình dưới 420px, ảnh hưởng đến header và các grid nhỏ */
 @media (max-width: 420px) {
     h1 {
         font-size: 20px;
@@ -836,6 +878,7 @@ footer a:hover {
     }
 }
 
+/* Tôn trọng tùy chọn giảm chuyển động của người dùng */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -851,6 +894,7 @@ footer a:hover {
 }
 
 /* --- BOOTSTRAP HYBRID OVERRIDES --- */
+/* Các lớp ghi đè Bootstrap để phù hợp với thiết kế của ứng dụng */
 .site-header.navbar {
     padding: 15px 0;
 }
@@ -908,7 +952,7 @@ footer a:hover {
     gap: 0;
 }
 
-.menu-grid.row > [class*="col-"] {
+.menu-grid.row>[class*="col-"] {
     display: flex;
 }
 
@@ -916,6 +960,7 @@ footer a:hover {
     height: 100%;
 }
 
+/* Focus state cho form controls Bootstrap */
 .form-control:focus,
 .form-select:focus {
     border-color: #1dd1a1;
@@ -926,12 +971,14 @@ footer a:hover {
     border: none;
 }
 
+/* Desktop: hiển thị dropdown khi hover */
 @media (min-width: 992px) {
-    .nav-dropdown:hover > .dropdown-menu {
+    .nav-dropdown:hover>.dropdown-menu {
         display: block;
     }
 }
 
+/* Tablet/Mobile: xử lý dropdown và navbar collapse */
 @media (max-width: 991.98px) {
     .main-nav.navbar-collapse {
         width: 100%;
