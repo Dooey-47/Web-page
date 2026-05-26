@@ -2,49 +2,54 @@
 <html lang="vi">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Nhóm phát triển Sức khỏe cá nhân" name="author">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <meta content="Ứng dụng sức khỏe cá nhân dạng B2C, truy cập nhanh BMI, nhắc uống nước và theo dõi tập luyện." name="description">
-    <meta content="sức khỏe cá nhân, BMI, uống nước, tập luyện, theo dõi sức khỏe" name="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nhóm phát triển Sức khỏe cá nhân">
+    <meta name="description" content="Ứng dụng sức khỏe cá nhân dạng B2C, truy cập nhanh BMI, nhắc uống nước và theo dõi tập luyện.">
+
     <title>Sức khỏe cá nhân | Menu chính</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header class="site-header navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container-fluid px-3 px-lg-5">
-            <div aria-label="Sức khỏe cá nhân" class="header-left navbar-brand mb-0">
-                <a aria-label="Đi đến menu chính" class="logo-container" href="index.html">
-                    <span aria-hidden="true" class="logo-heart fa-solid fa-heart">
-                        <i aria-hidden="true" class="fa-solid fa-droplet logo-water"></i>
+            <div class="header-left navbar-brand mb-0">
+                <a class="logo-container" href="index.html" aria-label="Đi đến menu chính">
+                    <span class="logo-heart fa-solid fa-heart" aria-hidden="true">
+                        <i class="fa-solid fa-droplet logo-water"></i>
                     </span>
                 </a>
                 <h1>SỨC KHỎE CÁ NHÂN</h1>
             </div>
-            <button aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng" class="navbar-toggler" data-bs-target="#mainNavbar" data-bs-toggle="collapse" type="button">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <nav aria-label="Menu chính" class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar">
+
+            <nav class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar" aria-label="Menu chính">
                 <ul class="navbar-nav nav-list ms-lg-auto">
                     <li class="nav-item dropdown nav-dropdown">
-                        <a aria-expanded="false" class="nav-link app-nav-item bmi dropdown-toggle" data-bs-toggle="dropdown" href="bmi.html" role="button">BMI</a>
+                        <a class="nav-link app-nav-item bmi dropdown-toggle" href="bmi.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">BMI</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="bmi.html">Tính BMI</a></li>
                             <li><a class="dropdown-item" href="bmi.html#saved-data">Lưu chiều cao/cân nặng</a></li>
                             <li><a class="dropdown-item" href="bmi.html#bmi-guide">Phân loại BMI</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown nav-dropdown">
-                        <a aria-expanded="false" class="nav-link app-nav-item water dropdown-toggle" data-bs-toggle="dropdown" href="water.html" role="button">Uống nước</a>
+                        <a class="nav-link app-nav-item water dropdown-toggle" href="water.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Uống nước</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="water.html">Tiến độ uống nước</a></li>
                             <li><a class="dropdown-item" href="water.html#reminder-settings">Cài nhắc nhở</a></li>
                             <li><a class="dropdown-item" href="water.html#waterToast">Thông báo</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown nav-dropdown">
-                        <a aria-expanded="false" class="nav-link app-nav-item workout dropdown-toggle" data-bs-toggle="dropdown" href="workout.html" role="button">Tập luyện</a>
+                        <a class="nav-link app-nav-item workout dropdown-toggle" href="workout.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tập luyện</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="workout.html#log-workout">Ghi bài tập</a></li>
                             <li><a class="dropdown-item" href="workout.html#workoutList">Danh sách tập</a></li>
@@ -55,32 +60,86 @@
             </nav>
         </div>
     </header>
-    <main class="main-container menu-page container py-4 flex-grow-1" id="main-content">
-        <section aria-labelledby="hero-title" class="hero-section">
+    <main class="main-container menu-page container py-4 flex-grow-1">
+        <section class="hero-section">
             <p class="eyebrow">Ứng dụng sức khỏe cá nhân</p>
-            <h2 id="hero-title">Chăm sóc sức khỏe mỗi ngày trong một giao diện gọn gàng</h2>
+            <h2>Chăm sóc sức khỏe mỗi ngày trong một giao diện gọn gàng</h2>
             <p class="hero-description">Chọn nhanh công cụ bạn cần: tính BMI, cài nhắc uống nước hoặc ghi lại bài tập. Giao diện đã được tách thành từng trang để trải nghiệm giống một sản phẩm B2C hoàn chỉnh hơn.</p>
+
             <div class="hero-actions">
                 <a class="cta-link" href="bmi.html"><i class="fa-solid fa-weight-scale"></i> Bắt đầu với BMI</a>
                 <a class="cta-link secondary" href="water.html"><i class="fa-solid fa-glass-water"></i> Cài nhắc uống nước</a>
             </div>
         </section>
 
-        <section aria-label="Lợi ích nổi bật" class="trust-strip">
-            <article class="trust-item"><i class="fa-solid fa-shield-heart"></i><div><strong>Cá nhân hóa</strong><p>Lưu chỉ số bằng localStorage ngay trên trình duyệt.</p></div></article>
-            <article class="trust-item"><i class="fa-solid fa-bolt"></i><div><strong>Nhanh, nhẹ</strong><p>Giữ cấu trúc frontend thuần HTML, CSS, JS và jQuery.</p></div></article>
-            <article class="trust-item"><i class="fa-solid fa-mobile-screen"></i><div><strong>Responsive</strong><p>Giữ Bootstrap navbar, dropdown và icon quen thuộc.</p></div></article>
+        <section class="trust-strip" aria-label="Lợi ích nổi bật">
+            <article class="trust-item">
+                <i class="fa-solid fa-shield-heart"></i>
+                <div>
+                    <strong>Cá nhân hóa</strong>
+                    <p>Lưu chỉ số bằng localStorage ngay trên trình duyệt.</p>
+                </div>
+            </article>
+            <article class="trust-item">
+                <i class="fa-solid fa-bolt"></i>
+                <div>
+                    <strong>Nhanh, nhẹ</strong>
+                    <p>Giữ cấu trúc frontend thuần HTML, CSS, JS và jQuery.</p>
+                </div>
+            </article>
+            <article class="trust-item">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <div>
+                    <strong>Responsive</strong>
+                    <p>Giữ Bootstrap navbar, dropdown và icon quen thuộc.</p>
+                </div>
+            </article>
         </section>
 
-        <section aria-label="Danh sách chức năng sức khỏe" class="menu-grid row g-4">
-            <div class="col-12 col-md-6 col-lg-4 d-flex"><article aria-labelledby="menu-bmi-title" class="app-card menu-card h-100 w-100"><a aria-describedby="menu-bmi-description" class="menu-card-link" href="bmi.html"><div aria-hidden="true" class="menu-icon bmi-icon"><i class="fa-solid fa-weight-scale"></i></div><div class="menu-card-content"><h2 class="app-card-title" id="menu-bmi-title">Tính toán BMI</h2><p id="menu-bmi-description">Kiểm tra chỉ số cơ thể dựa trên chiều cao và cân nặng.</p></div><span aria-hidden="true" class="menu-arrow"><i class="fa-solid fa-chevron-right"></i></span></a></article></div>
-            <div class="col-12 col-md-6 col-lg-4 d-flex"><article aria-labelledby="menu-water-title" class="app-card menu-card h-100 w-100"><a aria-describedby="menu-water-description" class="menu-card-link" href="water.html"><div aria-hidden="true" class="menu-icon water-icon"><i class="fa-solid fa-glass-water"></i></div><div class="menu-card-content"><h2 class="app-card-title" id="menu-water-title">Nhắc nhở uống nước</h2><p id="menu-water-description">Thiết lập thời gian nhắc nhở và theo dõi lượng nước trong ngày.</p></div><span aria-hidden="true" class="menu-arrow"><i class="fa-solid fa-chevron-right"></i></span></a></article></div>
-            <div class="col-12 col-md-6 col-lg-4 d-flex"><article aria-labelledby="menu-workout-title" class="app-card menu-card h-100 w-100"><a aria-describedby="menu-workout-description" class="menu-card-link" href="workout.html"><div aria-hidden="true" class="menu-icon workout-icon"><i class="fa-solid fa-person-running running-icon"></i></div><div class="menu-card-content"><h2 class="app-card-title" id="menu-workout-title">Theo dõi tập luyện</h2><p id="menu-workout-description">Ghi nhận buổi tập, thời gian vận động và năng lượng tiêu thụ.</p></div><span aria-hidden="true" class="menu-arrow"><i class="fa-solid fa-chevron-right"></i></span></a></article></div>
+        <section class="menu-grid row g-4" aria-label="Danh sách chức năng sức khỏe">
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <article class="app-card menu-card h-100 w-100">
+                    <a class="menu-card-link" href="bmi.html">
+                        <div class="menu-icon bmi-icon" aria-hidden="true"><i class="fa-solid fa-weight-scale"></i></div>
+                        <div class="menu-card-content">
+                            <h2 class="app-card-title">Tính toán BMI</h2>
+                            <p>Kiểm tra chỉ số cơ thể dựa trên chiều cao và cân nặng.</p>
+                        </div>
+                        <span class="menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+                </article>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <article class="app-card menu-card h-100 w-100">
+                    <a class="menu-card-link" href="water.html">
+                        <div class="menu-icon water-icon" aria-hidden="true"><i class="fa-solid fa-glass-water"></i></div>
+                        <div class="menu-card-content">
+                            <h2 class="app-card-title">Nhắc nhở uống nước</h2>
+                            <p>Thiết lập thời gian nhắc nhở và theo dõi lượng nước trong ngày.</p>
+                        </div>
+                        <span class="menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+                </article>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <article class="app-card menu-card h-100 w-100">
+                    <a class="menu-card-link" href="workout.html">
+                        <div class="menu-icon workout-icon" aria-hidden="true"><i class="fa-solid fa-person-running running-icon"></i></div>
+                        <div class="menu-card-content">
+                            <h2 class="app-card-title">Theo dõi tập luyện</h2>
+                            <p>Ghi nhận buổi tập, thời gian vận động và năng lượng tiêu thụ.</p>
+                        </div>
+                        <span class="menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+                </article>
+            </div>
         </section>
     </main>
     <footer class="site-footer mt-auto">
-        <section aria-labelledby="contact-title" class="footer-left">
-            <h2 id="contact-title">Liên hệ</h2>
+        <section class="footer-left">
+            <h2>Liên hệ</h2>
             <address>
                 <p>Hotline: <a href="tel:0902768830">090 2768 830</a></p>
                 <p>Email: <a href="mailto:nhom@gmail.com">nhom@gmail.com</a></p>
@@ -88,6 +147,7 @@
             </address>
         </section>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>

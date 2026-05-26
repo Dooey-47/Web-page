@@ -2,49 +2,55 @@
 <html lang="vi">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Nhóm phát triển Sức khỏe cá nhân" name="author">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/workout.css" rel="stylesheet">
-    <meta content="Trang theo dõi tập luyện của ứng dụng sức khỏe cá nhân." name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nhóm phát triển Sức khỏe cá nhân">
+    <meta name="description" content="Trang theo dõi tập luyện của ứng dụng sức khỏe cá nhân.">
+
     <title>Sức khỏe cá nhân | Tập luyện</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/workout.css">
 </head>
 <body class="workout-page d-flex flex-column min-vh-100">
     <header class="site-header navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container-fluid px-3 px-lg-5">
-            <div aria-label="Sức khỏe cá nhân" class="header-left navbar-brand mb-0">
-                <a aria-label="Đi đến menu chính" class="logo-container" href="index.html">
-                    <span aria-hidden="true" class="logo-heart fa-solid fa-heart">
-                        <i aria-hidden="true" class="fa-solid fa-droplet logo-water"></i>
+            <div class="header-left navbar-brand mb-0">
+                <a class="logo-container" href="index.html" aria-label="Đi đến menu chính">
+                    <span class="logo-heart fa-solid fa-heart" aria-hidden="true">
+                        <i class="fa-solid fa-droplet logo-water"></i>
                     </span>
                 </a>
                 <h1>SỨC KHỎE CÁ NHÂN</h1>
             </div>
-            <button aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng" class="navbar-toggler" data-bs-target="#mainNavbar" data-bs-toggle="collapse" type="button">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <nav aria-label="Menu chính" class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar">
+
+            <nav class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar" aria-label="Menu chính">
                 <ul class="navbar-nav nav-list ms-lg-auto">
                     <li class="nav-item dropdown nav-dropdown">
-                        <a aria-expanded="false" class="nav-link app-nav-item bmi dropdown-toggle" data-bs-toggle="dropdown" href="bmi.html" role="button">BMI</a>
+                        <a class="nav-link app-nav-item bmi dropdown-toggle" href="bmi.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">BMI</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="bmi.html">Tính BMI</a></li>
                             <li><a class="dropdown-item" href="bmi.html#saved-data">Lưu chiều cao/cân nặng</a></li>
                             <li><a class="dropdown-item" href="bmi.html#bmi-guide">Phân loại BMI</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown nav-dropdown">
-                        <a aria-expanded="false" class="nav-link app-nav-item water dropdown-toggle" data-bs-toggle="dropdown" href="water.html" role="button">Uống nước</a>
+                        <a class="nav-link app-nav-item water dropdown-toggle" href="water.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Uống nước</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="water.html">Tiến độ uống nước</a></li>
                             <li><a class="dropdown-item" href="water.html#reminder-settings">Cài nhắc nhở</a></li>
                             <li><a class="dropdown-item" href="water.html#waterToast">Thông báo</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown nav-dropdown">
-                        <a aria-expanded="false" class="nav-link app-nav-item workout dropdown-toggle active" data-bs-toggle="dropdown" href="workout.html" role="button">Tập luyện</a>
+                        <a class="nav-link app-nav-item workout dropdown-toggle active" href="workout.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tập luyện</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="workout.html#log-workout">Ghi bài tập</a></li>
                             <li><a class="dropdown-item" href="workout.html#workoutList">Danh sách tập</a></li>
@@ -55,30 +61,86 @@
             </nav>
         </div>
     </header>
-    <main class="main-container feature-page container py-4 flex-grow-1" id="main-content">
-        <section aria-labelledby="workout-hero-title" class="feature-hero">
+    <main class="main-container feature-page container py-4 flex-grow-1">
+        <section class="feature-hero">
             <div class="feature-hero-grid">
-                <div><a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Quay về menu</a><p class="eyebrow">Workout tracker</p><h2 id="workout-hero-title">Ghi lại buổi tập nhanh và rõ ràng</h2><p class="hero-description">Giữ lại card tập luyện, đồng hồ bấm giờ, icon người chạy và danh sách bài tập lưu cục bộ.</p></div>
-                <div aria-hidden="true" class="feature-hero-icon"><i class="fa-solid fa-person-running running-icon"></i></div>
+                <div>
+                    <a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Quay về menu</a>
+                    <p class="eyebrow">Workout tracker</p>
+                    <h2>Ghi lại buổi tập nhanh và rõ ràng</h2>
+                    <p class="hero-description">Giữ lại card tập luyện, đồng hồ bấm giờ, icon người chạy và danh sách bài tập lưu cục bộ.</p>
+                </div>
+                <div class="feature-hero-icon" aria-hidden="true"><i class="fa-solid fa-person-running running-icon"></i></div>
             </div>
         </section>
-        <section aria-labelledby="workout-title" class="app-card feature-card" id="log-workout">
-            <h2 class="app-card-title" id="workout-title">Theo dõi chế độ tập luyện</h2>
+
+        <section class="app-card feature-card" id="log-workout">
+            <h2 class="app-card-title">Theo dõi chế độ tập luyện</h2>
             <div class="sub-card workout-card-content">
-                <article aria-label="Thông tin buổi tập" class="workout-header"><div class="workout-header-left"><div aria-hidden="true" class="running-circle"><i class="fa-solid fa-person-running"></i></div><div><h3 class="workout-header-title">Tập Luyện</h3><p class="workout-header-sub">20 min 1 lần</p></div></div><i aria-hidden="true" class="fa-solid fa-chevron-right"></i></article>
-                <article aria-label="Chi tiết hoạt động tập luyện" class="workout-detail-box"><div class="left-info"><dl class="info-grid"><div class="info-item"><dt class="visually-hidden">Trạng thái</dt><dd><span class="status-icon"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span><span class="info-text">Hoàn thành trạng thái</span></dd></div><div class="info-item text-right"><dt class="label-gray">Thời gian</dt></div><div class="info-item"><dt class="visually-hidden">Năng lượng tiêu thụ</dt><dd class="info-text"><i aria-hidden="true" class="fa-solid fa-fire fire-icon"></i> 146 calories</dd></div><div class="info-item text-right"><dd><strong class="time-big">30 min</strong></dd></div></dl><p class="stopwatch-row"><i aria-hidden="true" class="fa-solid fa-stopwatch stopwatch-icon"></i><span class="visually-hidden">Đồng hồ bấm giờ:</span><time datetime="PT0S" id="stopwatch">00:00:00</time></p></div><div aria-hidden="true" class="right-animation"><i class="fa-solid fa-person-running running-icon"></i></div></article>
-                <button class="btn app-btn btn-log" onclick="logWorkout()" type="button">LOG MỚI</button>
+                <article class="workout-header" aria-label="Thông tin buổi tập">
+                    <div class="workout-header-left">
+                        <div class="running-circle" aria-hidden="true"><i class="fa-solid fa-person-running"></i></div>
+                        <div>
+                            <h3 class="workout-header-title">Tập Luyện</h3>
+                            <p class="workout-header-sub">20 min 1 lần</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </article>
+
+                <article class="workout-detail-box" aria-label="Chi tiết hoạt động tập luyện">
+                    <div class="left-info">
+                        <dl class="info-grid">
+                            <div class="info-item">
+                                <dt class="visually-hidden">Trạng thái</dt>
+                                <dd>
+                                    <span class="status-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                                    <span class="info-text">Hoàn thành trạng thái</span>
+                                </dd>
+                            </div>
+                            <div class="info-item text-right"><dt class="label-gray">Thời gian</dt></div>
+                            <div class="info-item">
+                                <dt class="visually-hidden">Năng lượng tiêu thụ</dt>
+                                <dd class="info-text"><i class="fa-solid fa-fire fire-icon" aria-hidden="true"></i> 146 calories</dd>
+                            </div>
+                            <div class="info-item text-right"><dd><strong class="time-big">30 min</strong></dd></div>
+                        </dl>
+
+                        <p class="stopwatch-row">
+                            <i class="fa-solid fa-stopwatch stopwatch-icon" aria-hidden="true"></i>
+                            <span class="visually-hidden">Đồng hồ bấm giờ:</span>
+                            <time id="stopwatch" datetime="PT0S">00:00:00</time>
+                        </p>
+                    </div>
+
+                    <div class="right-animation" aria-hidden="true"><i class="fa-solid fa-person-running running-icon"></i></div>
+                </article>
+
+                <button class="btn app-btn btn-log" type="button" onclick="logWorkout()">LOG MỚI</button>
             </div>
         </section>
-        <section aria-label="Lợi ích tập luyện" class="training-grid">
-            <article class="training-card"><i class="fa-solid fa-list-check"></i><h3>Ghi nhanh</h3><p>Thêm và xóa bài tập ngay trên trang bằng jQuery hiện có.</p></article>
-            <article class="training-card"><i class="fa-solid fa-stopwatch"></i><h3>Đếm thời gian</h3><p>Đồng hồ vẫn tự chạy sau khi mở trang tập luyện.</p></article>
-            <article class="training-card"><i class="fa-solid fa-database"></i><h3>Lưu local</h3><p>Danh sách bài tập được lưu trong localStorage.</p></article>
+
+        <section class="training-grid" aria-label="Lợi ích tập luyện">
+            <article class="training-card">
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Ghi nhanh</h3>
+                <p>Thêm và xóa bài tập ngay trên trang bằng jQuery hiện có.</p>
+            </article>
+            <article class="training-card">
+                <i class="fa-solid fa-stopwatch"></i>
+                <h3>Đếm thời gian</h3>
+                <p>Đồng hồ vẫn tự chạy sau khi mở trang tập luyện.</p>
+            </article>
+            <article class="training-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>Lưu local</h3>
+                <p>Danh sách bài tập được lưu trong localStorage.</p>
+            </article>
         </section>
     </main>
     <footer class="site-footer mt-auto">
-        <section aria-labelledby="contact-title" class="footer-left">
-            <h2 id="contact-title">Liên hệ</h2>
+        <section class="footer-left">
+            <h2>Liên hệ</h2>
             <address>
                 <p>Hotline: <a href="tel:0902768830">090 2768 830</a></p>
                 <p>Email: <a href="mailto:nhom@gmail.com">nhom@gmail.com</a></p>
@@ -86,6 +148,7 @@
             </address>
         </section>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
