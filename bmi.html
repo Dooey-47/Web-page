@@ -7,11 +7,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <meta content="Ứng dụng sức khỏe cá nhân dạng B2C, truy cập nhanh BMI, nhắc uống nước và theo dõi tập luyện." name="description">
-    <meta content="sức khỏe cá nhân, BMI, uống nước, tập luyện, theo dõi sức khỏe" name="keywords">
-    <title>Sức khỏe cá nhân | Menu chính</title>
+    <link href="css/bmi.css" rel="stylesheet">
+    <meta content="Trang tính BMI của ứng dụng sức khỏe cá nhân." name="description">
+    <title>Sức khỏe cá nhân | Tính BMI</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="bmi-page d-flex flex-column min-vh-100">
     <header class="site-header navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container-fluid px-3 px-lg-5">
             <div aria-label="Sức khỏe cá nhân" class="header-left navbar-brand mb-0">
@@ -28,7 +28,7 @@
             <nav aria-label="Menu chính" class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar">
                 <ul class="navbar-nav nav-list ms-lg-auto">
                     <li class="nav-item dropdown nav-dropdown">
-                        <a aria-expanded="false" class="nav-link app-nav-item bmi dropdown-toggle" data-bs-toggle="dropdown" href="bmi.html" role="button">BMI</a>
+                        <a aria-expanded="false" class="nav-link app-nav-item bmi dropdown-toggle active" data-bs-toggle="dropdown" href="bmi.html" role="button">BMI</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="bmi.html">Tính BMI</a></li>
                             <li><a class="dropdown-item" href="bmi.html#saved-data">Lưu chiều cao/cân nặng</a></li>
@@ -55,27 +55,27 @@
             </nav>
         </div>
     </header>
-    <main class="main-container menu-page container py-4 flex-grow-1" id="main-content">
-        <section aria-labelledby="hero-title" class="hero-section">
-            <p class="eyebrow">Ứng dụng sức khỏe cá nhân</p>
-            <h2 id="hero-title">Chăm sóc sức khỏe mỗi ngày trong một giao diện gọn gàng</h2>
-            <p class="hero-description">Chọn nhanh công cụ bạn cần: tính BMI, cài nhắc uống nước hoặc ghi lại bài tập. Giao diện đã được tách thành từng trang để trải nghiệm giống một sản phẩm B2C hoàn chỉnh hơn.</p>
-            <div class="hero-actions">
-                <a class="cta-link" href="bmi.html"><i class="fa-solid fa-weight-scale"></i> Bắt đầu với BMI</a>
-                <a class="cta-link secondary" href="water.html"><i class="fa-solid fa-glass-water"></i> Cài nhắc uống nước</a>
+    <main class="main-container feature-page container py-4 flex-grow-1" id="main-content">
+        <section aria-labelledby="bmi-hero-title" class="feature-hero">
+            <div class="feature-hero-grid">
+                <div><a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Quay về menu</a><p class="eyebrow">BMI tracker</p><h2 id="bmi-hero-title">Hiểu nhanh tình trạng cơ thể của bạn</h2><p class="hero-description">Nhập chiều cao và cân nặng, hệ thống tính BMI và lưu dữ liệu để lần sau mở lại tiện hơn.</p></div>
+                <div aria-hidden="true" class="feature-hero-icon"><i class="fa-solid fa-weight-scale"></i></div>
             </div>
         </section>
-
-        <section aria-label="Lợi ích nổi bật" class="trust-strip">
-            <article class="trust-item"><i class="fa-solid fa-shield-heart"></i><div><strong>Cá nhân hóa</strong><p>Lưu chỉ số bằng localStorage ngay trên trình duyệt.</p></div></article>
-            <article class="trust-item"><i class="fa-solid fa-bolt"></i><div><strong>Nhanh, nhẹ</strong><p>Giữ cấu trúc frontend thuần HTML, CSS, JS và jQuery.</p></div></article>
-            <article class="trust-item"><i class="fa-solid fa-mobile-screen"></i><div><strong>Responsive</strong><p>Giữ Bootstrap navbar, dropdown và icon quen thuộc.</p></div></article>
+        <section aria-labelledby="bmi-title" class="app-card feature-card" id="saved-data">
+            <h2 class="app-card-title" id="bmi-title">Tính toán BMI</h2>
+            <form aria-describedby="bmi-description" class="sub-card" onsubmit="calculateBMI(); return false;">
+                <p class="visually-hidden" id="bmi-description">Nhập chiều cao và cân nặng để tính chỉ số BMI.</p>
+                <div class="form-field"><label for="heightInput">Nhập chiều cao</label><div class="input-wrapper"><input aria-describedby="height-unit" class="form-control" id="heightInput" inputmode="decimal" min="1" name="height" type="number" value="170"><span class="unit" id="height-unit">cm</span></div></div>
+                <div class="form-field"><label for="weightInput">Nhập cân nặng</label><div class="input-wrapper"><input aria-describedby="weight-unit" class="form-control" id="weightInput" inputmode="decimal" min="1" name="weight" type="number" value="60"><span class="unit" id="weight-unit">kg</span></div></div>
+                <button class="btn app-btn btn-bmi" type="submit">TÍNH BMI</button>
+                <div aria-live="polite" class="bmi-result" id="bmiResult"><div class="bmi-score" id="bmiScore">--</div><div class="bmi-category" id="bmiCategory">Nhập dữ liệu để xem phân loại</div><p class="bmi-copy" id="bmiCopy">Kết quả cũng được lưu lại trên trình duyệt của bạn.</p></div>
+            </form>
         </section>
-
-        <section aria-label="Danh sách chức năng sức khỏe" class="menu-grid row g-4">
-            <div class="col-12 col-md-6 col-lg-4 d-flex"><article aria-labelledby="menu-bmi-title" class="app-card menu-card h-100 w-100"><a aria-describedby="menu-bmi-description" class="menu-card-link" href="bmi.html"><div aria-hidden="true" class="menu-icon bmi-icon"><i class="fa-solid fa-weight-scale"></i></div><div class="menu-card-content"><h2 class="app-card-title" id="menu-bmi-title">Tính toán BMI</h2><p id="menu-bmi-description">Kiểm tra chỉ số cơ thể dựa trên chiều cao và cân nặng.</p></div><span aria-hidden="true" class="menu-arrow"><i class="fa-solid fa-chevron-right"></i></span></a></article></div>
-            <div class="col-12 col-md-6 col-lg-4 d-flex"><article aria-labelledby="menu-water-title" class="app-card menu-card h-100 w-100"><a aria-describedby="menu-water-description" class="menu-card-link" href="water.html"><div aria-hidden="true" class="menu-icon water-icon"><i class="fa-solid fa-glass-water"></i></div><div class="menu-card-content"><h2 class="app-card-title" id="menu-water-title">Nhắc nhở uống nước</h2><p id="menu-water-description">Thiết lập thời gian nhắc nhở và theo dõi lượng nước trong ngày.</p></div><span aria-hidden="true" class="menu-arrow"><i class="fa-solid fa-chevron-right"></i></span></a></article></div>
-            <div class="col-12 col-md-6 col-lg-4 d-flex"><article aria-labelledby="menu-workout-title" class="app-card menu-card h-100 w-100"><a aria-describedby="menu-workout-description" class="menu-card-link" href="workout.html"><div aria-hidden="true" class="menu-icon workout-icon"><i class="fa-solid fa-person-running running-icon"></i></div><div class="menu-card-content"><h2 class="app-card-title" id="menu-workout-title">Theo dõi tập luyện</h2><p id="menu-workout-description">Ghi nhận buổi tập, thời gian vận động và năng lượng tiêu thụ.</p></div><span aria-hidden="true" class="menu-arrow"><i class="fa-solid fa-chevron-right"></i></span></a></article></div>
+        <section aria-labelledby="bmi-guide-title" class="bmi-tips" id="bmi-guide">
+            <article class="bmi-tip"><i class="fa-solid fa-ruler-vertical"></i><h3>Đo chính xác</h3><p>Nhập chiều cao theo cm và cân nặng theo kg để kết quả ổn định.</p></article>
+            <article class="bmi-tip"><i class="fa-solid fa-heart-pulse"></i><h3>Theo dõi định kỳ</h3><p>Dùng chỉ số BMI như một tín hiệu tham khảo, không thay thế tư vấn y tế.</p></article>
+            <article class="bmi-tip"><i class="fa-solid fa-lock"></i><h3>Lưu cục bộ</h3><p>Dữ liệu chiều cao và cân nặng được lưu trong localStorage của trình duyệt.</p></article>
         </section>
     </main>
     <footer class="site-footer mt-auto">
