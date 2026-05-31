@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+    <!-- Thiết lập bộ mã ký tự UTF-8 và viewport responsive -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Thẻ meta author và description phục vụ SEO, mô tả trang -->
     <meta name="author" content="Nhóm phát triển Sức khỏe cá nhân">
     <meta name="description" content="Trang tính BMI của ứng dụng sức khỏe cá nhân.">
 
     <title>Sức khỏe cá nhân | Tính BMI</title>
 
+    <!-- Font Awesome 6 (bộ icon) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap 5 (CSS) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- File CSS tùy chỉnh chung cho toàn bộ ứng dụng -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- File CSS riêng cho trang BMI -->
     <link rel="stylesheet" href="css/bmi.css">
 </head>
+
 <body class="bmi-page d-flex flex-column min-vh-100">
+    <!-- HEADER: thanh điều hướng chính, sử dụng Bootstrap navbar -->
     <header class="site-header navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container-fluid px-3 px-lg-5">
+
+            <!-- Logo + tên website -->
             <div class="header-left navbar-brand mb-0">
                 <a class="logo-container" href="index.html" aria-label="Đi đến menu chính">
                     <span class="logo-heart fa-solid fa-heart" aria-hidden="true">
@@ -25,14 +37,20 @@
                 <h1>SỨC KHỎE CÁ NHÂN</h1>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng">
+            <!-- Nút hamburger cho chế độ mobile (Bootstrap) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <nav class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar" aria-label="Menu chính">
+            <!-- Thanh menu thả xuống, chứa các mục BMI, Uống nước, Tập luyện -->
+            <nav class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar"
+                aria-label="Menu chính">
                 <ul class="navbar-nav nav-list ms-lg-auto">
+                    <!-- Mục BMI (đang active) -->
                     <li class="nav-item dropdown nav-dropdown">
-                        <a class="nav-link app-nav-item bmi dropdown-toggle active" href="bmi.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">BMI</a>
+                        <a class="nav-link app-nav-item bmi dropdown-toggle active" href="bmi.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">BMI</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="bmi.html">Tính BMI</a></li>
                             <li><a class="dropdown-item" href="bmi.html#saved-data">Lưu chiều cao/cân nặng</a></li>
@@ -40,8 +58,10 @@
                         </ul>
                     </li>
 
+                    <!-- Mục Uống nước -->
                     <li class="nav-item dropdown nav-dropdown">
-                        <a class="nav-link app-nav-item water dropdown-toggle" href="water.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Uống nước</a>
+                        <a class="nav-link app-nav-item water dropdown-toggle" href="water.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Uống nước</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="water.html">Tiến độ uống nước</a></li>
                             <li><a class="dropdown-item" href="water.html#reminder-settings">Cài nhắc nhở</a></li>
@@ -49,8 +69,10 @@
                         </ul>
                     </li>
 
+                    <!-- Mục Tập luyện -->
                     <li class="nav-item dropdown nav-dropdown">
-                        <a class="nav-link app-nav-item workout dropdown-toggle" href="workout.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tập luyện</a>
+                        <a class="nav-link app-nav-item workout dropdown-toggle" href="workout.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Tập luyện</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="workout.html#log-workout">Ghi bài tập</a></li>
                             <li><a class="dropdown-item" href="workout.html#workoutList">Danh sách tập</a></li>
@@ -61,40 +83,53 @@
             </nav>
         </div>
     </header>
+
+    <!-- Nội dung chính của trang -->
     <main class="main-container feature-page container py-4 flex-grow-1">
+        <!-- Phần hero: giới thiệu tính năng và nút quay về menu -->
         <section class="feature-hero">
             <div class="feature-hero-grid">
                 <div>
                     <a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Quay về menu</a>
                     <p class="eyebrow">BMI tracker</p>
                     <h2>Hiểu nhanh tình trạng cơ thể của bạn</h2>
-                    <p class="hero-description">Nhập chiều cao và cân nặng để xem chỉ số BMI, từ đó hiểu cơ thể và theo dõi thay đổi dễ dàng hơn.</p>
+                    <p class="hero-description">Nhập chiều cao và cân nặng để xem chỉ số BMI, từ đó hiểu cơ thể và theo
+                        dõi thay đổi dễ dàng hơn.</p>
                 </div>
                 <div class="feature-hero-icon" aria-hidden="true"><i class="fa-solid fa-weight-scale"></i></div>
             </div>
         </section>
 
+        <!-- Card tính toán BMI: form nhập liệu và hiển thị kết quả -->
         <section class="app-card feature-card" id="saved-data">
             <h2 class="app-card-title">Tính toán BMI</h2>
+
+            <!-- Form gọi hàm calculateBMI khi submit, ngăn reload trang -->
             <form class="sub-card" onsubmit="calculateBMI(); return false;">
                 <div class="form-field">
                     <label for="heightInput">Nhập chiều cao</label>
                     <div class="input-wrapper">
-                        <input class="form-control" id="heightInput" name="height" type="number" min="1" inputmode="decimal" value="170">
+
+                        <!-- Input chiều cao (cm), giá trị mặc định 170 -->
+                        <input class="form-control" id="heightInput" name="height" type="number" min="1"
+                            inputmode="decimal" value="170">
                         <span class="unit">cm</span>
                     </div>
                 </div>
 
                 <div class="form-field">
+                    <!-- Input cân nặng (kg), giá trị mặc định 60 -->
                     <label for="weightInput">Nhập cân nặng</label>
                     <div class="input-wrapper">
-                        <input class="form-control" id="weightInput" name="weight" type="number" min="1" inputmode="decimal" value="60">
+                        <input class="form-control" id="weightInput" name="weight" type="number" min="1"
+                            inputmode="decimal" value="60">
                         <span class="unit">kg</span>
                     </div>
                 </div>
 
                 <button class="btn app-btn btn-bmi" type="submit">TÍNH BMI</button>
 
+                <!-- Khu vực hiển thị kết quả BMI (được cập nhật bởi JavaScript) -->
                 <div class="bmi-result" id="bmiResult" aria-live="polite">
                     <div class="bmi-score" id="bmiScore">--</div>
                     <div class="bmi-category" id="bmiCategory">Nhập dữ liệu để xem phân loại</div>
@@ -103,6 +138,7 @@
             </form>
         </section>
 
+        <!-- Mẹo và hướng dẫn về BMI -->
         <section class="bmi-tips" id="bmi-guide">
             <article class="bmi-tip">
                 <i class="fa-solid fa-ruler-vertical"></i>
@@ -121,6 +157,8 @@
             </article>
         </section>
     </main>
+
+    <!-- Chân trang: thông tin liên hệ -->
     <footer class="site-footer mt-auto">
         <section class="footer-left">
             <h2>Liên hệ</h2>
@@ -132,8 +170,10 @@
         </section>
     </footer>
 
+    <!-- Thư viện Bootstrap JS, jQuery và file main.js chứa logic tính BMI, lưu dữ liệu... -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -1,19 +1,25 @@
-/* Water reminder page-specific CSS split from the original feature section */
+/* CSS trang nhắc nhở uống nước */
+
+
+/* Định nghĩa biến màu sắc riêng cho trang nước */
 body.water-page {
     --page-accent: #54a0ff;
     --page-accent-dark: #2478bd;
 }
 
+/* Màu icon hero và hiệu ứng viền trong suốt */
 .water-page .feature-hero-icon {
     color: var(--page-accent-dark);
     box-shadow: inset 0 0 0 18px rgba(84, 160, 255, 0.1);
 }
 
+/* Nền gradient và viền cho card đặc trưng của trang nước */
 .water-page .feature-card {
     background: linear-gradient(180deg, #dff4ff, #f8fcff);
     border-color: #b9e3ff;
 }
 
+/* Vòng tròn tiến độ uống nước (dùng conic-gradient) */
 .progress-circle {
     width: 170px;
     height: 170px;
@@ -27,6 +33,7 @@ body.water-page {
     box-shadow: 0 15px 35px rgba(84, 160, 255, 0.16);
 }
 
+/* Tạo một hình tròn nhỏ bên trong để có hiệu ứng viền (phần trắng ở giữa) */
 .progress-circle::after {
     content: "";
     position: absolute;
@@ -36,12 +43,14 @@ body.water-page {
     background: #fff;
 }
 
+/* Nội dung văn bản bên trong vòng tròn (số và chú thích) */
 .progress-text {
     position: relative;
     z-index: 1;
     text-align: center;
 }
 
+/* Số */
 .progress-text .number {
     display: block;
     font-size: 36px;
@@ -49,17 +58,20 @@ body.water-page {
     color: #2478bd;
 }
 
+/* Chú thích "nước ngày" */
 .progress-text .sub {
     color: #5f6f69;
     font-size: 13px;
 }
 
+/* Lưới hiển thị các mục tiêu uống nước (hydration-grid) */
 .hydration-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
 }
 
+/* Thẻ con bên trong grid (hydration-card) */
 .hydration-card {
     background: #fff;
     border: 1px solid #ccecff;
@@ -68,18 +80,21 @@ body.water-page {
     box-shadow: 0 10px 28px rgba(36, 120, 189, 0.07);
 }
 
+/* Icon trong thẻ lợi ích */
 .hydration-card i {
     color: #2478bd;
     font-size: 22px;
     margin-bottom: 8px;
 }
 
+/* Mô tả trong thẻ lợi ích */
 .hydration-card p {
     color: #5f6f69;
     margin: 0;
     font-size: 14px;
 }
 
+/* Lớp .toast-notification - thông báo nổi (toast) cho nhắc nhở uống nước */
 .toast-notification {
     position: fixed;
     bottom: 15px;
@@ -96,11 +111,13 @@ body.water-page {
     width: min(280px, calc(100% - 30px));
 }
 
+/* Icon bên trong toast notification */
 .toast-icon {
     font-size: 22px;
     color: #54a0ff;
 }
 
+/* Nội dung văn bản bên trong toast */
 .toast-content h2 {
     font-size: 13px;
     font-weight: bold;
@@ -113,6 +130,7 @@ body.water-page {
     margin: 0;
 }
 
+/* Nút đóng toast */
 .toast-close {
     position: absolute;
     top: 4px;
@@ -126,6 +144,7 @@ body.water-page {
     min-height: 32px;
 }
 
+/* Responsive: dưới 760px chuyển lưới lợi ích thành 1 cột */
 @media (max-width: 760px) {
     .hydration-grid {
         grid-template-columns: 1fr;

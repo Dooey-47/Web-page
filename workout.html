@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/workout.css">
 </head>
+
 <body class="workout-page d-flex flex-column min-vh-100">
     <header class="site-header navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container-fluid px-3 px-lg-5">
@@ -25,14 +27,17 @@
                 <h1>SỨC KHỎE CÁ NHÂN</h1>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Mở menu điều hướng">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <nav class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar" aria-label="Menu chính">
+            <nav class="collapse navbar-collapse main-nav justify-content-lg-end" id="mainNavbar"
+                aria-label="Menu chính">
                 <ul class="navbar-nav nav-list ms-lg-auto">
                     <li class="nav-item dropdown nav-dropdown">
-                        <a class="nav-link app-nav-item bmi dropdown-toggle" href="bmi.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">BMI</a>
+                        <a class="nav-link app-nav-item bmi dropdown-toggle" href="bmi.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">BMI</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="bmi.html">Tính BMI</a></li>
                             <li><a class="dropdown-item" href="bmi.html#saved-data">Lưu chiều cao/cân nặng</a></li>
@@ -41,7 +46,8 @@
                     </li>
 
                     <li class="nav-item dropdown nav-dropdown">
-                        <a class="nav-link app-nav-item water dropdown-toggle" href="water.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Uống nước</a>
+                        <a class="nav-link app-nav-item water dropdown-toggle" href="water.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Uống nước</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="water.html">Tiến độ uống nước</a></li>
                             <li><a class="dropdown-item" href="water.html#reminder-settings">Cài nhắc nhở</a></li>
@@ -50,7 +56,9 @@
                     </li>
 
                     <li class="nav-item dropdown nav-dropdown">
-                        <a class="nav-link app-nav-item workout dropdown-toggle active" href="workout.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tập luyện</a>
+                        <!-- Mục Tập luyện đang active -->
+                        <a class="nav-link app-nav-item workout dropdown-toggle active" href="workout.html"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Tập luyện</a>
                         <ul class="dropdown-menu app-dropdown-menu">
                             <li><a class="dropdown-item" href="workout.html#log-workout">Ghi bài tập</a></li>
                             <li><a class="dropdown-item" href="workout.html#workoutList">Danh sách tập</a></li>
@@ -70,13 +78,16 @@
                     <h2>Ghi lại buổi tập nhanh và rõ ràng</h2>
                     <p class="hero-description">Theo dõi tiến độ tập luyện và duy trì động lực vận động mỗi ngày.</p>
                 </div>
-                <div class="feature-hero-icon" aria-hidden="true"><i class="fa-solid fa-person-running running-icon"></i></div>
+                <div class="feature-hero-icon" aria-hidden="true"><i
+                        class="fa-solid fa-person-running running-icon"></i></div>
             </div>
         </section>
 
+        <!-- Card chính: ghi lại bài tập và hiển thị danh sách -->
         <section class="app-card feature-card" id="log-workout">
             <h2 class="app-card-title">Theo dõi chế độ tập luyện</h2>
             <div class="sub-card workout-card-content">
+                <!-- Thông tin tóm tắt về bài tập (phần header) -->
                 <article class="workout-header" aria-label="Thông tin buổi tập">
                     <div class="workout-header-left">
                         <div class="running-circle" aria-hidden="true"><i class="fa-solid fa-person-running"></i></div>
@@ -88,39 +99,50 @@
                     <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                 </article>
 
+                <!-- Chi tiết buổi tập (mẫu) kèm đồng hồ bấm giờ -->
                 <article class="workout-detail-box" aria-label="Chi tiết hoạt động tập luyện">
                     <div class="left-info">
                         <dl class="info-grid">
                             <div class="info-item">
                                 <dt class="visually-hidden">Trạng thái</dt>
                                 <dd>
-                                    <span class="status-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                                    <span class="status-icon"><i class="fa-solid fa-circle-check"
+                                            aria-hidden="true"></i></span>
                                     <span class="info-text">Hoàn thành trạng thái</span>
                                 </dd>
                             </div>
-                            <div class="info-item text-right"><dt class="label-gray">Thời gian</dt></div>
+                            <div class="info-item text-right">
+                                <dt class="label-gray">Thời gian</dt>
+                            </div>
                             <div class="info-item">
                                 <dt class="visually-hidden">Năng lượng tiêu thụ</dt>
-                                <dd class="info-text"><i class="fa-solid fa-fire fire-icon" aria-hidden="true"></i> 146 calories</dd>
+                                <dd class="info-text"><i class="fa-solid fa-fire fire-icon" aria-hidden="true"></i> 146
+                                    calories</dd>
                             </div>
-                            <div class="info-item text-right"><dd><strong class="time-big">30 min</strong></dd></div>
+                            <div class="info-item text-right">
+                                <dd><strong class="time-big">30 min</strong></dd>
+                            </div>
                         </dl>
 
+                        <!-- Đồng hồ đếm giờ (stopwatch) hiển thị 00:00:00, sẽ được điều khiển bằng JS -->
                         <p class="stopwatch-row">
                             <i class="fa-solid fa-stopwatch stopwatch-icon" aria-hidden="true"></i>
                             <span class="visually-hidden">Đồng hồ bấm giờ:</span>
                             <time id="stopwatch" datetime="PT0S">00:00:00</time>
                         </p>
                     </div>
-
-                    <div class="right-animation" aria-hidden="true"><i class="fa-solid fa-person-running running-icon"></i></div>
+                    <!-- Form nhập thông tin bài tập mới -->
+                    <div class="right-animation" aria-hidden="true"><i
+                            class="fa-solid fa-person-running running-icon"></i></div>
                 </article>
 
                 <form class="workout-log-form" id="workoutForm" autocomplete="off">
+                    <!-- Hai cột: tên bài tập, loại bài tập -->
                     <div class="form-row two-columns">
                         <div class="form-field">
                             <label for="exerciseName">Tên bài tập</label>
-                            <input class="form-control" id="exerciseName" name="exerciseName" type="text" placeholder="Ví dụ: Chạy bộ" required>
+                            <input class="form-control" id="exerciseName" name="exerciseName" type="text"
+                                placeholder="Ví dụ: Chạy bộ" required>
                         </div>
                         <div class="form-field">
                             <label for="exerciseType">Loại bài tập</label>
@@ -133,18 +155,21 @@
                         </div>
                     </div>
 
+                    <!-- Ba cột: thời gian (phút), calories, ngày tập -->
                     <div class="form-row three-columns">
                         <div class="form-field">
                             <label for="exerciseDuration">Thời gian</label>
                             <div class="input-wrapper">
-                                <input class="form-control" id="exerciseDuration" name="exerciseDuration" type="number" min="1" placeholder="30" required>
+                                <input class="form-control" id="exerciseDuration" name="exerciseDuration" type="number"
+                                    min="1" placeholder="30" required>
                                 <span class="unit">phút</span>
                             </div>
                         </div>
                         <div class="form-field">
                             <label for="exerciseCalories">Calories</label>
                             <div class="input-wrapper">
-                                <input class="form-control" id="exerciseCalories" name="exerciseCalories" type="number" min="0" placeholder="146">
+                                <input class="form-control" id="exerciseCalories" name="exerciseCalories" type="number"
+                                    min="0" placeholder="146">
                                 <span class="unit">kcal</span>
                             </div>
                         </div>
@@ -154,18 +179,23 @@
                         </div>
                     </div>
 
+                    <!-- Ghi chú (text area) -->
                     <div class="form-field">
                         <label for="exerciseNote">Ghi chú</label>
-                        <textarea class="form-control" id="exerciseNote" name="exerciseNote" rows="2" placeholder="Ví dụ: Chạy nhẹ buổi sáng, cảm thấy ổn hơn hôm qua"></textarea>
+                        <textarea class="form-control" id="exerciseNote" name="exerciseNote" rows="2"
+                            placeholder="Ví dụ: Chạy nhẹ buổi sáng, cảm thấy ổn hơn hôm qua"></textarea>
                     </div>
 
+                    <!-- Nút gửi form, trigger xử lý từ main.js -->
                     <button class="btn app-btn btn-log" type="submit">GHI BUỔI TẬP</button>
                     <p class="workout-status" id="workoutStatus" role="status" aria-live="polite"></p>
                 </form>
+                <!-- Khu vực hiển thị danh sách bài tập đã lưu (được tạo động từ localStorage) -->
                 <div id="workoutList" class="workout-list" aria-live="polite"></div>
             </div>
         </section>
 
+        <!-- Lợi ích của tính năng tập luyện -->
         <section class="training-grid" aria-label="Lợi ích tập luyện">
             <article class="training-card">
                 <i class="fa-solid fa-list-check"></i>
@@ -199,4 +229,5 @@
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

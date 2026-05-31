@@ -1,21 +1,25 @@
-/* BMI page-specific CSS split from the original feature section */
+/* Định nghĩa biến màu sắc riêng cho trang BMI */
 body.bmi-page {
     --page-accent: #1dd1a1;
     --page-accent-dark: #12856a;
 }
 
+/* Màu của icon hero (cân) – dùng biến accent tối */
 .bmi-page .feature-hero-icon {
     color: var(--page-accent-dark);
 }
 
+/* Nền gradient đặc trưng cho card BMI */
 .bmi-page .feature-card {
     background: linear-gradient(180deg, #e5f6ed, #f8fffb);
 }
 
+/* Khoảng cách giữa các phần tử trong sub-card */
 .bmi-page .sub-card {
     gap: 4px;
 }
 
+/* Khối kết quả BMI – ẩn mặc định */
 .bmi-page .bmi-result {
     display: none;
     margin-top: 16px;
@@ -25,10 +29,12 @@ body.bmi-page {
     border: 1px solid #b2e7ca;
 }
 
+/* Khi có class is-visible, hiển thị khối kết quả */
 .bmi-page .bmi-result.is-visible {
     display: block;
 }
 
+/* Điểm BMI – to, đậm, màu xanh đậm */
 .bmi-score {
     font-size: 40px;
     line-height: 1;
@@ -36,23 +42,28 @@ body.bmi-page {
     font-weight: 900;
 }
 
+/* Phân loại BMI (gầy, bình thường, thừa cân...) */
 .bmi-category {
     color: #24312d;
     font-weight: 800;
     margin-top: 4px;
 }
 
+/* Chú thích nhỏ phía dưới kết quả */
 .bmi-copy {
     color: #5f6f69;
     margin: 8px 0 0;
 }
 
+
+/* Lưới 3 cột cho các mẹo BMI */
 .bmi-tips {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
 }
 
+/* Mỗi thẻ mẹo BMI */
 .bmi-tip {
     background: #fff;
     border: 1px solid #b2e7ca;
@@ -61,18 +72,21 @@ body.bmi-page {
     box-shadow: 0 10px 28px rgba(18, 133, 106, 0.07);
 }
 
+/* Icon trong thẻ mẹo */
 .bmi-tip i {
     color: var(--page-accent-dark);
     font-size: 22px;
     margin-bottom: 8px;
 }
 
+/* Văn bản mô tả trong thẻ mẹo */
 .bmi-tip p {
     color: #5f6f69;
     margin: 0;
     font-size: 14px;
 }
 
+/* Responsive: dưới 760px chuyển lưới mẹo thành 1 cột */
 @media (max-width: 760px) {
     .bmi-tips {
         grid-template-columns: 1fr;

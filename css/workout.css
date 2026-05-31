@@ -1,8 +1,27 @@
 /* Workout page-specific CSS split from the original feature section */
-body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
-.workout-page .feature-hero-icon { color: var(--page-accent-dark); box-shadow: inset 0 0 0 18px rgba(46, 134, 222, 0.1); }
-.workout-page .feature-card { background: linear-gradient(180deg, #e9f2ff, #f8fbff); border-color: #bfd8f7; }
-.workout-card-content { background-color: #ffffff; }
+body.workout-page {
+    --page-accent: #2e86de;
+    --page-accent-dark: #315f9e;
+}
+
+/* Biến màu riêng cho trang tập luyện */
+.workout-page .feature-hero-icon {
+    color: var(--page-accent-dark);
+    box-shadow: inset 0 0 0 18px rgba(46, 134, 222, 0.1);
+}
+
+/* Icon hero và hiệu ứng viền trong suốt */
+.workout-page .feature-card {
+    background: linear-gradient(180deg, #e9f2ff, #f8fbff);
+    border-color: #bfd8f7;
+}
+
+/* Nền trắng cho phần nội dung bên trong card */
+.workout-card-content {
+    background-color: #ffffff;
+}
+
+/* Header của phần workout (tối màu) */
 .workout-header {
     background-color: #333;
     color: #ffffff;
@@ -13,67 +32,255 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     justify-content: space-between;
     margin-bottom: 12px;
 }
-.workout-header-left { display: flex; align-items: center; gap: 10px; }
-.running-circle { background-color: rgba(255, 255, 255, 0.2); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
-.workout-header-title { font-weight: bold; font-size: 15px; margin: 0; }
-.workout-header-sub { font-size: 11px; opacity: 0.9; margin: 0; }
-.workout-detail-box { display: flex; justify-content: space-between; margin-bottom: 15px; gap: 12px; }
-.left-info { width: 65%; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; row-gap: 8px; column-gap: 8px; font-size: 13px; }
-.info-item, .info-item dd { display: flex; align-items: center; gap: 4px; min-width: 0; }
-.info-item dd { margin: 0; }
-.text-right { justify-content: flex-end; text-align: right; }
-.status-icon { color: #1dd1a1; }
-.fire-icon { color: #ff7675; }
-.stopwatch-icon { color: #1dd1a1; }
-.label-gray { color: #777; }
-.time-big { font-size: 15px; font-weight: bold; }
-.stopwatch-row { display: flex; align-items: center; gap: 6px; font-size: 13px; margin-top: 10px; }
-.right-animation { width: 32%; background-color: #f3faf6; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 38px; color: #333; padding: 15px 0; min-width: 80px; }
-.running-icon { animation: jog 0.6s infinite alternate ease-in-out; }
-@keyframes jog { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
-.training-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.training-card { background: #fff; border: 1px solid #bfd8f7; border-radius: 16px; padding: 16px; box-shadow: 0 10px 28px rgba(46, 134, 222, 0.07); }
-.training-card i { color: #315f9e; font-size: 22px; margin-bottom: 8px; }
-.training-card p { color: #5f6f69; margin: 0; font-size: 14px; }
-@media (max-width: 760px) { .training-grid { grid-template-columns: 1fr; } .workout-detail-box { flex-direction: column; } .left-info, .right-animation { width: 100%; } .right-animation { min-height: 100px; } }
-@media (max-width: 420px) { .info-grid { grid-template-columns: 1fr; } .text-right { justify-content: flex-start; text-align: left; } }
 
-/* Actual workout-log creation form */
+/* Bên trái header: icon + chữ */
+.workout-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Vòng tròn chạy nhỏ bên cạnh tiêu đề */
+.running-circle {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+/* Tiêu đề "Tập Luyện" */
+.workout-header-title {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Dòng phụ "20 min 1 lần" */
+.workout-header-sub {
+    font-size: 11px;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* Khung chi tiết bài tập (bên dưới header) */
+.workout-detail-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 12px;
+}
+
+/* Phần bên trái (thông tin và đồng hồ) */
+.left-info {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+/* Lưới thông tin 2 cột */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 8px;
+    column-gap: 8px;
+    font-size: 13px;
+}
+
+/* Các dòng thông tin */
+.info-item,
+.info-item dd {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+}
+
+.info-item dd {
+    margin: 0;
+}
+
+/* Căn phải cho cột thứ hai */
+.text-right {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Màu xanh cho icon check */
+.status-icon {
+    color: #1dd1a1;
+}
+
+/* Màu cam cho icon lửa calories */
+.fire-icon {
+    color: #ff7675;
+}
+
+/* Màu xanh cho icon đồng hồ bấm giờ */
+.stopwatch-icon {
+    color: #1dd1a1;
+}
+
+/* Màu xám nhạt cho nhãn */
+.label-gray {
+    color: #777;
+}
+
+/* Chữ thời gian */
+.time-big {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Dòng đồng hồ bấm giờ */
+.stopwatch-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* Phần bên phải: animation chạy */
+.right-animation {
+    width: 32%;
+    background-color: #f3faf6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    color: #333;
+    padding: 15px 0;
+    min-width: 80px;
+}
+
+/* Hiệu ứng nhún cho icon chạy */
+.running-icon {
+    animation: jog 0.6s infinite alternate ease-in-out;
+}
+
+/* Keyframes cho hiệu ứng nhún */
+@keyframes jog {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-4px);
+    }
+}
+
+/* Lưới lợi ích tập luyện (3 cột) */
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+/* Thẻ lợi ích */
+.training-card {
+    background: #fff;
+    border: 1px solid #bfd8f7;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 10px 28px rgba(46, 134, 222, 0.07);
+}
+
+/* Icon trong thẻ lợi ích */
+.training-card i {
+    color: #315f9e;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+/* Mô tả trong thẻ lợi ích */
+.training-card p {
+    color: #5f6f69;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Responsive: dưới 760px lưới lợi ích thành 1 cột, detail box xếp dọc */
+@media (max-width: 760px) {
+    .training-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workout-detail-box {
+        flex-direction: column;
+    }
+
+    .left-info,
+    .right-animation {
+        width: 100%;
+    }
+
+    .right-animation {
+        min-height: 100px;
+    }
+}
+
+/* Responsive dưới 420px: lưới info-grid thành 1 cột */
+@media (max-width: 420px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .text-right {
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+/* FORM GHI BÀI TẬP */
 .workout-log-form {
     margin-top: 14px;
     display: grid;
     gap: 12px;
 }
 
+/* Xóa margin-bottom mặc định của form-field trong form này */
 .workout-log-form .form-field {
     margin-bottom: 0;
 }
 
+/* Dòng chứa trường (dùng grid) */
 .form-row {
     display: grid;
     gap: 12px;
 }
 
+/* Dòng 2 cột */
 .two-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* Dòng 3 cột */
 .three-columns {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* Textarea ghi chú có thể kéo dài theo chiều dọc */
 .workout-log-form textarea {
     min-height: 76px;
     resize: vertical;
 }
 
+/* Danh sách các bài tập đã ghi */
 .workout-list {
     margin: 16px 0 2px;
     display: grid;
     gap: 10px;
 }
 
+/* Thông báo khi danh sách rỗng */
 .workout-empty {
     color: #5f6f69;
     background: #f8fbff;
@@ -83,6 +290,7 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     margin: 0;
 }
 
+/* Mỗi item trong danh sách bài tập */
 .workout-log-item {
     background: #f8fbff;
     border: 1px solid #d9e8fb;
@@ -92,6 +300,7 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     gap: 10px;
 }
 
+/* Dòng trên cùng của item: tên + nút xóa */
 .workout-log-top {
     display: flex;
     justify-content: space-between;
@@ -99,12 +308,14 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     align-items: flex-start;
 }
 
+/* Tên bài tập */
 .workout-log-name {
     font-weight: 700;
     color: #243b53;
     margin: 0 0 4px;
 }
 
+/* Các meta: loại, thời gian, calories, ngày */
 .workout-log-meta {
     display: flex;
     flex-wrap: wrap;
@@ -113,18 +324,21 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     font-size: 13px;
 }
 
+/* Ghi chú bài tập */
 .workout-log-note {
     color: #435466;
     font-size: 14px;
     margin: 0;
 }
 
+/* Nút xóa bài tập */
 .workout-log-actions {
     display: flex;
     gap: 8px;
     flex-shrink: 0;
 }
 
+/* Nút xóa (màu đỏ nhạt) */
 .btn-log-delete {
     border: 0;
     border-radius: 8px;
@@ -135,11 +349,14 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     font-weight: 700;
 }
 
+/* Hover nút xóa */
 .btn-log-delete:hover {
     background: #ffd1d1;
 }
 
+/* Responsive cho form: dưới 760px chuyển các dòng 2-3 cột thành 1 cột */
 @media (max-width: 760px) {
+
     .two-columns,
     .three-columns {
         grid-template-columns: 1fr;
@@ -150,6 +367,7 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     }
 }
 
+/* Trạng thái thông báo sau khi ghi bài tập (hiệu ứng fade) */
 .workout-status {
     color: #12856a;
     font-weight: 700;
@@ -159,6 +377,7 @@ body.workout-page { --page-accent: #2e86de; --page-accent-dark: #315f9e; }
     transition: opacity 0.2s ease;
 }
 
+/* Khi có class is-visible, hiển thị thông báo */
 .workout-status.is-visible {
     opacity: 1;
 }
